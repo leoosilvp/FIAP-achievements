@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import '../css/badge.css'
 
-const THEMES = ['light', 'dark']
+const THEMES = ['light', 'dark', 'black']
 const DEFAULT_THEME = 'light'
 const DEFAULT_SIZE = 150
 const FALLBACK_BADGE = '404'
