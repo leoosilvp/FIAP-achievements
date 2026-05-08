@@ -1,14 +1,16 @@
-<div align="center">
+# 🏅 FIAP achievements — Certificados de Nano Course
 
-<img src="https://fiap-achievements.vercel.app/api/badge?badge=294870&theme=dark" width="110"/>
-<br/>
-<br/>
-<img src="./public/assets/svg/logo.svg" />
+
+<div style="display: flex; justify-content: center; gap: 50px; ">
+
+  <img src="./public/assets/svg/logo.svg" />
+  <img src="https://fiap-achievements.vercel.app/api/badge?badge=294870&theme=dark" width="110"/>
+</div>
 <br/>
 
----
 
-<p>Um serviço de emblemas rápido e personalizável para conquistas em cursos da FIAP.<br/> Incorpore em qualquer lugar, gratuitamente.</p>
+<div align='center'>
+
 
 <p>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licença-MIT-000000?style=flat-square" alt="MIT License" /></a>
@@ -27,11 +29,8 @@
 
 </div>
 
----
 
-## 📖 Sobre o Projeto
-
-O **FIAP Achievements** é um serviço open-source que permite que estudantes exibam suas conquistas de cursos FIAP diretamente no GitHub, portfólios e qualquer lugar que renderize imagens HTML.
+**FIAP Achievements** é um serviço open-source que permite que estudantes exibam suas conquistas de cursos FIAP diretamente no GitHub, portfólios e qualquer lugar que renderize imagens HTML.
 
 Cada badge é um **SVG nítido**, servido por API com cache CDN de 1 ano, disponível em três temas de cor. Nenhuma chave de API. Nenhum cadastro. Apenas uma `<img>`.
 
