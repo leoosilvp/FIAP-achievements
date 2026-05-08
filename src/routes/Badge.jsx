@@ -22,19 +22,17 @@ const Badge = () => {
     }, [badge, theme])
 
     return (
-        <main className='badge-main'>
-            <img
-                src={badgeSrc}
-                className='badge'
-                width={size}
-                height={size}
-                loading="lazy"
-                draggable={false}
-                onError={(e) => {
-                    e.currentTarget.src = `/assets/svg/${DEFAULT_THEME}/${FALLBACK_BADGE}.svg`
-                }}
-            />
-        </main>
+        <img
+            src={badgeSrc}
+            className='badge'
+            width={size}
+            height={size}
+            loading="lazy"
+            draggable={false}
+            onError={(e) => {
+                e.currentTarget.src = `/assets/svg/${DEFAULT_THEME}/${FALLBACK_BADGE}.svg`
+            }}
+        />
     )
 }
 

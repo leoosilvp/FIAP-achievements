@@ -1,5 +1,24 @@
-{
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
-}
+[
+    {
+        "cleanUrls": true,
+        "headers": [
+            {
+                "source": "/api/(.*)",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "public, max-age=31536000, immutable"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "rewrites": [
+            {
+                "source": "/(.*)",
+                "destination": "/"
+            }
+        ]
+    }
+]
