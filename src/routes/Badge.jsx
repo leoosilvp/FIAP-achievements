@@ -18,7 +18,7 @@ const Badge = () => {
     const size = Number(searchParams.get('size')) || DEFAULT_SIZE
 
     const badgeSrc = useMemo(() => {
-        return `/src/assets/svg/${theme}/${badge}.svg`
+        return `/assets/svg/${theme}/${badge}.svg`
     }, [badge, theme])
 
     return (
