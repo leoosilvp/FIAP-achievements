@@ -1,13 +1,10 @@
-# 🏅 FIAP achievements — Certificados de Nano Course
+<p align="center">
+  <img src="./public/assets/svg/logo.svg"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://fiap-achievements.vercel.app/api/badge?badge=294870&theme=dark" width="100"/>
+</p>
 
-
-<div style="display: flex; justify-content: center; gap: 50px; ">
-
-  <img src="./public/assets/svg/logo.svg" />
-  <img src="https://fiap-achievements.vercel.app/api/badge?badge=294870&theme=dark" width="110"/>
-</div>
 <br/>
-
 
 <div align='center'>
 
