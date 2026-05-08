@@ -1,24 +1,22 @@
-[
+{
+  "cleanUrls": true,
+
+  "rewrites": [
     {
-        "cleanUrls": true,
-        "headers": [
-            {
-                "source": "/api/(.*)",
-                "headers": [
-                    {
-                        "key": "Cache-Control",
-                        "value": "public, max-age=31536000, immutable"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "rewrites": [
-            {
-                "source": "/(.*)",
-                "destination": "/"
-            }
-        ]
+      "source": "/badge",
+      "destination": "/"
     }
-]
+  ],
+
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, immutable, max-age=31536000"
+        }
+      ]
+    }
+  ]
+}
