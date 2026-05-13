@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import '../css/badge.css'
 
 const THEMES = ['light', 'dark', 'black']
 
@@ -41,16 +40,18 @@ const Badge = () => {
     if (!badgeSrc) return null
 
     return (
-        <img
-            src={badgeSrc}
-            className="badge"
-            alt={`FIAP badge ${badge}`}
-            width={size}
-            height={size}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-        />
+        <main className='badge-main'>
+            <img
+                src={badgeSrc}
+                className="badge"
+                alt={`FIAP badge ${badge}`}
+                width={size}
+                height={size}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+            />
+        </main>
     )
 }
 

@@ -1,9 +1,11 @@
+import Header from '../components/Header'
+import '../css/home.css'
 
 const Home = () => {
   return (
-    <div>
-      
-    </div>
+    <main className='home-main'>
+      <Header />
+    </main>
   )
 }
 
