@@ -10,7 +10,7 @@
 :root {
     --light-color: #f5f5f5;
     --border-color: #0b0b0b;
-    --gray-color: #7e7e7e;
+    --gray-color: #8c8c8c;
     --transition: all 0.2s ease;
 }
 
@@ -19,7 +19,19 @@ body {
     width: 100vw;
     min-height: 100vh;
     background: #000;
+    color: var(--light-color);
     overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: flex;
+    width: 5px;
+    background: #000000;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #111111;
+    border-radius: 20px;
 }
 
 
@@ -31,10 +43,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100vw;
     padding: 15px 20px;
     height: fit-content;
-    background: #000000e6;
-    backdrop-filter: blur(5px);
+    background: #000000b3;
+    backdrop-filter: blur(3px);
 }
 
 .header-main img {
@@ -45,6 +58,7 @@ body {
 .header-main nav ul {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .header-main nav ul a {

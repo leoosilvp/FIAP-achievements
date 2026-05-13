@@ -5,7 +5,9 @@ import { Github } from '@geist-ui/icons'
 const Header = () => {
     return (
         <header className='header-main'>
-            <img src={logo} />
+            <Link to='/home'>
+                <img src={logo} draggable={false} />
+            </Link>
             <nav>
                 <ul>
                     <Link>Catálogo</Link>
