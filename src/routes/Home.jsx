@@ -190,7 +190,7 @@ const Home = () => {
 
           <div className='home-categories-grid'>
             {badgeCategories.map((category, index) => (
-              <div key={index} className='home-categories-card'>
+              <Link to='/catalog' key={index} className='home-categories-card'>
                 <div className='home-categories-card-icon'>
                   <Award size={28} />
                 </div>
@@ -198,7 +198,7 @@ const Home = () => {
                   {category.tag}
                 </span>
                 <h3>{category.name}</h3>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

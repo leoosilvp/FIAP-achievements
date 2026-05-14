@@ -371,6 +371,7 @@
     background: #010101;
     cursor: default;
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .home-categories-card:hover {
