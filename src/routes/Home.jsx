@@ -5,6 +5,7 @@ import { GitPullRequest, Search, Award, Users, Star, ArrowRight, Grid } from '@g
 import badge1 from '../../public/assets/certificates/gs/2025/future-of-work/black/1.svg'
 import badge2 from '../../public/assets/certificates/challenge/2026/totvs/dark/1.svg'
 import badge3 from '../../public/assets/certificates/challenge/2026/jovi/light/1.svg'
+import Footer from '../components/Footer'
 
 const features = [
   {
@@ -226,7 +227,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-
+        <Footer />
       </div>
     </main>
   )
