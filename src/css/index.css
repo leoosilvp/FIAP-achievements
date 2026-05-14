@@ -34,6 +34,14 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
+.erro-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
 
 /* Header */
 .header-main {
@@ -164,6 +172,97 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     animation: loop 1.5s infinite linear;
 }
+
+
+
+
+/* error */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.error-page header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.error-page header img {
+  display: flex;
+  width: 210px;
+}
+
+.error-page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-page-content h1 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.error-page-content img {
+  margin: 30px 0;
+  display: flex;
+  width: 200px;
+}
+
+.error-page-content p {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gray-color);
+}
+
+.error-page-btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.error-page-btns a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  border: 1px solid #333333;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--gray-color);
+  transition: var(--transition);
+}
+
+.error-page-btns a:hover {
+  border-color: #383838;
+  background: #101010;
+  color: var(--light-color);
+}
+
+.error-page-btns a:first-child {
+  border-color: var(--light-color);
+  background: var(--light-color);
+  color: #000;
+  box-shadow: 0 0 10px 0 #ffffff35;
+}
+
+.error-page-btns a:first-child:hover {
+  border-color: #c2c2c2;
+  background: #c2c2c2;
+}
+
 
 @keyframes loop {
     0% {

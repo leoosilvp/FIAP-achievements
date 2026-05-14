@@ -176,7 +176,7 @@ const Badges = () => {
                       </td>
                       <td>
                         {src ? (
-                          <img src={src} alt={t.name} className='badge-table-preview' />
+                          <img src={src} alt={t.name} className='badge-table-preview' draggable={false} />
                         ) : (
                           <span className='badge-theme-missing'>—</span>
                         )}
