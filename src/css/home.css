@@ -36,7 +36,7 @@
 
 .home-presentation-left p {
     width: 90%;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 300;
     color: #c9c9c9;
 }
@@ -95,9 +95,49 @@
     width: 50%;
 }
 
-.home-presentation-right img {
+.home-presentation-badges {
+    display: flex;
+    align-items: end;
+}
+
+.home-presentation-badges img {
     display: flex;
     width: 300px;
+    z-index: 2;
+    transition: var(--transition);
+
+}
+
+.home-presentation-badges img:first-child {
+    width: 215px;
+    height: 215px;
+    margin-right: -140px;
+    transform: rotateZ(-35deg);
+    z-index: 0;
+    margin-bottom: 43px;
+}
+
+.home-presentation-badges img:last-child {
+    width: 215px;
+    height: 215px;
+    margin-left: -140px;
+    transform: rotateZ(35deg);
+    z-index: 1;
+    margin-bottom: 43px;
+}
+
+.home-presentation-badges img:nth-child(2):hover {
+    transform: scale(0.95);
+}
+
+.home-presentation-badges:has(img:nth-child(2):hover) img:first-child {
+    margin-right: -225px;
+    transform: rotateZ(0deg);
+}
+
+.home-presentation-badges:has(img:nth-child(2):hover) img:last-child {
+    margin-left: -225px;
+    transform: rotateZ(0deg);
 }
 
 .home-section {

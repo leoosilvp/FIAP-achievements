@@ -2,7 +2,9 @@ import '../css/home.css'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 import { GitPullRequest, Search, Award, Users, Star, ArrowRight, Grid } from '@geist-ui/icons'
-import badge from '../../public/assets/certificates/gs/2025/future-of-work/black/1.svg'
+import badge1 from '../../public/assets/certificates/gs/2025/future-of-work/black/1.svg'
+import badge2 from '../../public/assets/certificates/challenge/2026/totvs/dark/1.svg'
+import badge3 from '../../public/assets/certificates/challenge/2026/jovi/light/1.svg'
 
 const features = [
   {
@@ -106,11 +108,11 @@ const Home = () => {
           </div>
 
           <div className='home-presentation-right'>
-            <img
-              src={badge}
-              draggable={false}
-              alt='Badge FIAP Future of Work 2025'
-            />
+            <section className='home-presentation-badges'>
+              <img src={badge2} draggable={false} alt='Badge FIAP Future of Work 2025' />
+              <img src={badge1} draggable={false} alt='Badge FIAP Future of Work 2025' />
+              <img src={badge3} draggable={false} alt='Badge FIAP Future of Work 2025' />
+            </section>
           </div>
         </section>
 
@@ -209,7 +211,7 @@ const Home = () => {
             </p>
             <div className='home-cta-buttons'>
               <Link to='/catalog' className='active'>
-                <Search size={19} />
+                <Grid size={19} />
                 Acessar catálogo
               </Link>
 
