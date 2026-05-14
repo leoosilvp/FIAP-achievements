@@ -1,6 +1,5 @@
 {
   "cleanUrls": true,
-
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -9,18 +8,6 @@
     {
       "source": "/(.*)",
       "destination": "/index.html"
-    }
-  ],
-
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, immutable, max-age=31536000"
-        }
-      ]
     }
   ]
 }
