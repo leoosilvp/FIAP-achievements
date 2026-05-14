@@ -1,7 +1,7 @@
 import '../css/home.css'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
-import { GitPullRequest, Search, Award, Users, Star, ArrowRight } from '@geist-ui/icons'
+import { GitPullRequest, Search, Award, Users, Star, ArrowRight, Grid } from '@geist-ui/icons'
 import badge from '../../public/assets/certificates/gs/2025/future-of-work/black/1.svg'
 
 const features = [
@@ -89,7 +89,7 @@ const Home = () => {
 
             <div className='home-presentation-buttons'>
               <Link to='/catalog' className='active'>
-                <Search size={19} />
+                <Grid size={19} />
                 Catálogo de Badges
               </Link>
 

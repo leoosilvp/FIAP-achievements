@@ -47,8 +47,9 @@ body::-webkit-scrollbar-thumb {
     padding: 15px 20px;
     height: fit-content;
     background: #0000006c;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     z-index: 10;
+    transition: var(--transition);
 }
 
 .header-main img {
@@ -75,6 +76,11 @@ body::-webkit-scrollbar-thumb {
 
 .header-main nav ul a:hover {
     color: var(--light-color);
+}
+
+.header-main-scrolled {
+    background: #000000d0;
+    backdrop-filter: blur(4px);
 }
 
 
