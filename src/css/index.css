@@ -46,13 +46,14 @@ body::-webkit-scrollbar-thumb {
     width: 100vw;
     padding: 15px 20px;
     height: fit-content;
-    background: #000000b3;
-    backdrop-filter: blur(3px);
+    background: #0000006c;
+    backdrop-filter: blur(4px);
+    z-index: 10;
 }
 
 .header-main img {
     display: flex;
-    width: 200px;
+    width: 210px;
 }
 
 .header-main nav ul {
@@ -87,4 +88,16 @@ body::-webkit-scrollbar-thumb {
 .badge {
     object-fit: contain;
     user-select: none;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
