@@ -20,7 +20,7 @@ const Header = () => {
             </Link>
             <nav>
                 <ul>
-                    <Link>Catálogo</Link>
+                    <Link to='/catalog'>Catálogo</Link>
                     <Link to='https://canva.link/8nb1a3rlbru5tsh' target='_blank'>Canva</Link>
                     <Link to='https://fiap-csm.symplicity.com/students/' target='_blank'>Talent Lab</Link>
                     <Link to='https://on.fiap.com.br/' target='_blank'>FIAP ON</Link>
