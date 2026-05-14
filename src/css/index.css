@@ -84,18 +84,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/* badge */
-.badge-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.badge {
-    object-fit: contain;
-    user-select: none;
-}
-
 /* Footer */
 .footer-main {
     width: 100%;
@@ -170,6 +158,36 @@ body::-webkit-scrollbar-thumb {
     font-size: 0.75rem;
     font-weight: 300;
     color: #333;
+}
+
+.catalog-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+    gap: 15px;
+}
+
+.catalog-loading h1 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #333;
+}
+
+.loading {
+    display: flex;
+    animation: loop 1.5s infinite linear;
+}
+
+@keyframes loop {
+    0% {
+        transform: rotateZ(0deg) ;
+    }
+    100% {
+        transform: rotateZ(360deg) ;
+    }
 }
 
 
