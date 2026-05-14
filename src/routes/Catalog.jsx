@@ -12,7 +12,6 @@ const Catalog = () => {
     filteredCatalog,
     loading,
     error,
-    hasResults,
   } = useCatalog()
 
   if (loading) {
@@ -25,7 +24,6 @@ const Catalog = () => {
             <h1>Buscando categorias</h1>
           </div>
         </section>
-        <Footer />
       </main>
     )
   }
@@ -36,12 +34,11 @@ const Catalog = () => {
         <Header />
         <section className='catalog-content'>
           <div className='catalog-empty'>
-            <AlertTriangle size={40} />
+            <AlertTriangle size={40} color='#e9cf08' />
             <h3>Erro ao carregar catálogo!</h3>
             <p>Tente novamente mais tarde</p>
           </div>
         </section>
-        <Footer />
       </main>
     )
   }
@@ -150,13 +147,6 @@ const Catalog = () => {
 
             return null
           })}
-
-        {!hasResults && (
-          <div className='catalog-empty'>
-            <h3>Nenhuma badge encontrada!</h3>
-            <p>Tente ajustar sua busca ou filtros.</p>
-          </div>
-        )}
       </section>
       <Footer />
     </main>

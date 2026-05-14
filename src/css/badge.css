@@ -1,0 +1,186 @@
+.badge-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-content {
+    width: 100%;
+    padding: 120px 80px 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.badge-header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.badge-tag {
+    width: fit-content;
+    padding: 4px 12px;
+    border: 1px solid #1a1a1a;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.badge-header h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--light-color);
+}
+
+.badge-header p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.7;
+}
+
+.badge-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #1a1a1a;
+    background: #050505;
+    color: #aaa;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.badge-back-btn:hover {
+    border-color: #2a2a2a;
+    color: #fff;
+    background: #0a0a0a;
+}
+
+.badge-loading,
+.badge-empty {
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.badge-empty h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #d3d3d3;
+}
+
+.badge-empty p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #777;
+}
+
+.badge-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.badge-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #050505;
+    border: 1px solid #111;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.badge-table thead {
+    background: #0a0a0a;
+}
+
+.badge-table th {
+    text-align: left;
+    padding: 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.badge-row {
+    transition: 0.2s;
+}
+
+.badge-row:hover {
+    background: #0a0a0a;
+}
+
+.badge-table td {
+    padding: 14px;
+    border-bottom: 1px solid #111;
+    color: #ddd;
+    font-size: 0.85rem;
+}
+
+.badge-cell-name {
+    font-weight: 500;
+}
+
+.badge-theme {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    border: 1px solid #1a1a1a;
+    color: #888;
+}
+
+.badge-theme-black {
+    color: #aaa;
+}
+
+.badge-theme-dark {
+    color: #888;
+}
+
+.badge-theme-light {
+    color: #ddd;
+}
+
+.badge-table-preview {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.badge-url-cell code {
+    font-size: 0.7rem;
+    color: #777;
+    white-space: nowrap;
+}
+
+.badge-copy-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.badge-copy-btn:hover {
+    background: #0c0c0c;
+    border-color: #2a2a2a;
+    color: #ddd;
+}

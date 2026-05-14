@@ -1,87 +1,122 @@
 import fs from 'fs'
 import path from 'path'
 
-const ROOT = path.join(
-    process.cwd(),
-    'public/assets/certificates'
-)
+const ROOT = path.join(process.cwd(), 'public/assets/certificates')
 
-function formatTitle(slug) {
+const THEMES = ['black', 'dark', 'light']
+
+function formatTitle(slug = '') {
     return slug
         .split('-')
-        .map((word) => {
-            return word.charAt(0).toUpperCase() + word.slice(1)
-        })
+        .filter(Boolean)
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ')
 }
 
+function existsDir(p) {
+    return fs.existsSync(p) && fs.statSync(p).isDirectory()
+}
+
 function getDirectories(source) {
-    return fs
-        .readdirSync(source)
-        .filter((name) => {
-            return fs.statSync(path.join(source, name)).isDirectory()
-        })
+    if (!existsDir(source)) return []
+    return fs.readdirSync(source).filter((name) => existsDir(path.join(source, name)))
 }
 
-function getFiles(source) {
-    return fs
-        .readdirSync(source)
-        .filter((file) => {
-            return file.endsWith('.svg')
-        })
+function getSvgFiles(dirPath) {
+    if (!fs.existsSync(dirPath)) return []
+    return fs.readdirSync(dirPath).filter((f) => f.endsWith('.svg'))
 }
 
-function getThemeFiles(basePath) {
-    const blackPath = path.join(basePath, 'black')
+function buildDeepBadges({ type, year, topic }) {
+    const basePath = path.join(ROOT, type, year, topic)
 
-    if (!fs.existsSync(blackPath)) {
-        return []
+    if (!existsDir(basePath)) return null
+
+    const referenceTheme = THEMES.find((t) => existsDir(path.join(basePath, t))) ?? null
+
+    if (!referenceTheme) return []
+
+    const files = getSvgFiles(path.join(basePath, referenceTheme))
+
+    return files.map((file) => {
+        const id = file.replace('.svg', '')
+
+        return {
+            id,
+            themes: Object.fromEntries(
+                THEMES.map((t) => [
+                    t,
+                    `/assets/certificates/${type}/${year}/${topic}/${t}/${file}`,
+                ])
+            ),
+        }
+    })
+}
+
+function buildNanoBadges() {
+    const basePath = path.join(ROOT, 'nano')
+
+    if (!existsDir(basePath)) return null
+
+    const referenceTheme = THEMES.find((t) => existsDir(path.join(basePath, t))) ?? null
+
+    if (!referenceTheme) return []
+
+    const files = getSvgFiles(path.join(basePath, referenceTheme))
+
+    return files.map((file) => {
+        const id = file.replace('.svg', '')
+
+        return {
+            id,
+            themes: Object.fromEntries(
+                THEMES.map((t) => [t, `/assets/certificates/nano/${t}/${file}`])
+            ),
+        }
+    })
+}
+
+function buildCatalog() {
+    const catalog = {}
+    const types = getDirectories(ROOT)
+
+    for (const currentType of types) {
+        if (currentType === 'nano') {
+            catalog['nano'] = {}
+            continue
+        }
+
+        const typePath = path.join(ROOT, currentType)
+        catalog[currentType] = {}
+
+        const years = getDirectories(typePath)
+
+        for (const currentYear of years) {
+            const yearPath = path.join(typePath, currentYear)
+            const topics = getDirectories(yearPath)
+
+            catalog[currentType][currentYear] = topics
+                .map((t) => ({
+                    title: formatTitle(t),
+                    slug: t,
+                    type: currentType,
+                    year: Number(currentYear),
+                }))
+                .sort((a, b) => a.title.localeCompare(b.title))
+        }
     }
 
-    return getFiles(blackPath)
+    return catalog
 }
 
 export default function handler(req, res) {
     try {
-        const { type, year, topic } = req.query
+        const { type, year, topic, company } = req.query
 
-        // =========================================================
-        // MODO 1 — LISTAGEM AGRUPADA
-        // =========================================================
+        const isCatalogMode = !type && !year && !topic && !company
 
-        if (!type && !year && !topic) {
-            const catalog = {}
-
-            const types = getDirectories(ROOT)
-
-            for (const currentType of types) {
-                catalog[currentType] = {}
-
-                const typePath = path.join(ROOT, currentType)
-
-                const years = getDirectories(typePath)
-
-                for (const currentYear of years) {
-                    catalog[currentType][currentYear] = []
-
-                    const yearPath = path.join(typePath, currentYear)
-
-                    const topics = getDirectories(yearPath)
-
-                    for (const currentTopic of topics) {
-                        catalog[currentType][currentYear].push({
-                            title: formatTitle(currentTopic),
-                            slug: currentTopic,
-                            type: currentType,
-                            year: Number(currentYear),
-                        })
-                    }
-
-                    catalog[currentType][currentYear].sort((a, b) => {
-                        return a.title.localeCompare(b.title)
-                    })
-                }
-            }
+        if (isCatalogMode) {
+            const catalog = buildCatalog()
 
             return res.status(200).json({
                 success: true,
@@ -90,52 +125,54 @@ export default function handler(req, res) {
             })
         }
 
-        // =========================================================
-        // MODO 2 — LISTAGEM DE BADGES
-        // =========================================================
+        if (type === 'nano') {
+            const badges = buildNanoBadges()
 
-        if (!type || !year || !topic) {
-            return res.status(400).json({
-                success: false,
-                message: 'type, year and topic are required',
+            if (badges === null) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'Nano badges directory not found',
+                })
+            }
+
+            return res.status(200).json({
+                success: true,
+                mode: 'badges',
+                data: {
+                    title: 'Nano Courses',
+                    slug: 'nano',
+                    type: 'nano',
+                    year: null,
+                    total: badges.length,
+                    badges,
+                },
             })
         }
 
-        const targetPath = path.join(
-            ROOT,
-            type,
-            year,
-            topic
-        )
+        const finalTopic = topic || company
 
-        if (!fs.existsSync(targetPath)) {
+        if (!type || !year || !finalTopic) {
+            return res.status(400).json({
+                success: false,
+                message: 'type, year and topic/company are required',
+            })
+        }
+
+        const badges = buildDeepBadges({ type, year, topic: finalTopic })
+
+        if (badges === null) {
             return res.status(404).json({
                 success: false,
                 message: 'Topic not found',
             })
         }
 
-        const files = getThemeFiles(targetPath)
-
-        const badges = files.map((file) => {
-            const fileName = file.replace('.svg', '')
-
-            return {
-                id: fileName,
-                themes: {
-                    black: `/assets/certificates/${type}/${year}/${topic}/black/${file}`,
-                    dark: `/assets/certificates/${type}/${year}/${topic}/dark/${file}`,
-                    light: `/assets/certificates/${type}/${year}/${topic}/light/${file}`,
-                },
-            }
-        })
-
         return res.status(200).json({
             success: true,
             mode: 'badges',
             data: {
-                title: formatTitle(topic),
-                slug: topic,
+                title: formatTitle(finalTopic),
+                slug: finalTopic,
                 type,
                 year: Number(year),
                 total: badges.length,
@@ -143,10 +180,12 @@ export default function handler(req, res) {
             },
         })
     } catch (error) {
+        console.error('[catalog handler]', error)
+
         return res.status(500).json({
             success: false,
             message: 'Internal server error',
-            error: error.message,
+            error: error?.message ?? 'unknown error',
         })
     }
 }
