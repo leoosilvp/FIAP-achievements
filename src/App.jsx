@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from "./routes/Home"
 import Catalog from "./routes/Catalog"
-import Badges from "./components/catalog/Badges"
+import Badges from "./routes/Badges"
 
 const App = () => {
   return (

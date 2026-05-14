@@ -1,8 +1,8 @@
-import '../../css/badge.css'
+import '../css/badge.css'
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Loader, AlertTriangle, Copy, Check, ChevronLeft } from '@geist-ui/icons'
-import Header from '../Header'
+import Header from '../components/Header'
 
 const BASE_URL = 'https://fiap-achievements.vercel.app/api/badge'
 
