@@ -11,16 +11,18 @@
 <p>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licença-MIT-000000?style=flat-square" alt="MIT License" /></a>
   <a href="https://vercel.com"><img src="https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel" alt="Vercel" /></a>
-  <a><img src="https://img.shields.io/badge/VERSÃO-2.0.0-000000?style=flat-square" alt="Versão" /></a>
+  <a><img src="https://img.shields.io/badge/VERSÃO-2.0.1-000000?style=flat-square" alt="Versão" /></a>
   <img src="https://img.shields.io/badge/SVG-CDN--cached-000000?style=flat-square" alt="SVG cached" />
 </p>
 
 <p>
+  <a href="https://fiap-achievements.vercel.app/home"><strong>Site</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://fiap-achievements.vercel.app/catalog"><strong>Catálogo</strong></a>
+  &nbsp;·&nbsp;
   <a href="#-início-rápido"><strong>Início Rápido</strong></a>
   &nbsp;·&nbsp;
   <a href="#-referência-da-api"><strong>API</strong></a>
-  &nbsp;·&nbsp;
-  <a href="#-catálogo-de-badges"><strong>Catálogo</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/leoosilvp/fiap-achievements/issues"><strong>Reportar Bug</strong></a>
   &nbsp;·&nbsp;
@@ -39,6 +41,7 @@ Cada badge é um **SVG nítido**, servido por API com cache CDN de 1 ano, dispon
 
 ## Índice
 
+- [🌐 Site e Catálogo](#-site-e-catálogo)
 - [🚀 Início Rápido](#-início-rápido)
 - [📡 Referência da API](#-referência-da-api)
   - [Parâmetros](#parâmetros)
@@ -55,6 +58,20 @@ Cada badge é um **SVG nítido**, servido por API com cache CDN de 1 ano, dispon
 - [🤝 Contribuindo](#-contribuindo)
 - [🔒 Segurança](#-segurança)
 - [📄 Licença](#-licença)
+
+---
+
+## 🌐 Site e Catálogo
+
+A forma mais fácil de encontrar suas badges é pelo site — sem precisar decorar IDs ou slugs.
+
+| Página | URL | O que você encontra |
+|--------|-----|---------------------|
+| **Home** | [fiap-achievements.vercel.app/home](https://fiap-achievements.vercel.app/home) | Visão geral do projeto e como usar |
+| **Catálogo** | [fiap-achievements.vercel.app/catalog](https://fiap-achievements.vercel.app/catalog) | Todas as badges com busca e filtros por categoria |
+
+
+> No catálogo você encontra os IDs dos Nano Courses e os slugs de Challenge e Global Solution que precisa para montar sua URL.
 
 ---
 
@@ -80,12 +97,12 @@ Cole o ID diretamente no parâmetro `badge`:
 <img src="https://fiap-achievements.vercel.app/api/badge?badge=gs&year=2025&topic=TOPICO&theme=dark" width="100" />
 ```
 
-> **Onde encontrar os valores?** Consulte o [Catálogo de Badges](#-catálogo-de-badges) abaixo.
+> **Onde encontrar os valores?** Acesse o [Catálogo](https://fiap-achievements.vercel.app/catalog) ou consulte o [Catálogo de Badges](#-catálogo-de-badges) abaixo.
 
-**Página de pré-visualização:**
+**Pré-visualização de qualquer badge:**
 
 ```
-https://fiap-achievements.vercel.app/badge?badge=SEU_ID&theme=dark&size=100
+https://fiap-achievements.vercel.app/badge?badge=SEU_ID&theme=dark
 ```
 
 ---
@@ -148,6 +165,8 @@ Badges ficam em cache por **1 ano** na CDN — carregam instantaneamente em qual
 ---
 
 ## 🏅 Catálogo de Badges
+
+> 💡 **Dica:** prefira navegar pelo [catálogo interativo](https://fiap-achievements.vercel.app/catalog) — ele tem busca, filtros e preview em tempo real.
 
 Todas as badges estão disponíveis nos três temas. As pré-visualizações abaixo exibem a variante `light`.
 
@@ -287,7 +306,6 @@ https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=ANO&company=
 | **Soul Up** (`soul-up`) | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=soul-up&ranking=1&theme=light" width="120" /> | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=soul-up&ranking=2&theme=light" width="120" /> | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=soul-up&ranking=3&theme=light" width="120" /> |
 | **TOTVS** (`totvs`) | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=totvs&ranking=1&theme=light" width="120" /> | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=totvs&ranking=2&theme=light" width="120" /> | <img src="https://fiap-achievements.vercel.app/api/badge?badge=challenge&year=2026&company=totvs&ranking=3&theme=light" width="120" /> |
 
-
 #### 2025
 
 | Empresa | 🥇 1º lugar | 🥈 2º lugar | 🥉 3º lugar |
@@ -390,14 +408,35 @@ fiap-achievements/
 │           ├── error-dark.svg
 │           └── error-black.svg
 ├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   └── Footer.jsx
 │   ├── routes/
-│   │   ├── Home.jsx               # Página inicial
-│   │   └── Badge.jsx              # Pré-visualização
+│   │   ├── Home.jsx               # Página inicial (/home)
+│   │   ├── Catalog.jsx            # Catálogo interativo (/catalog)
+│   │   └── Badges.jsx             # Pré-visualização (/badge)
+│   ├── hooks/
+│   │   └── useCatalog.js
+│   ├── css/
 │   ├── App.jsx
 │   └── main.jsx
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml                 # Lint e build em todo PR/push para main
+│   │   └── validate-badges.yml    # Validação de SVGs em PRs com badges
+│   └── pull_request_template.md
 ├── vercel.json
 └── vite.config.js
 ```
+
+**Rotas da aplicação:**
+
+| Rota | Descrição |
+|------|-----------|
+| `/home` | Página inicial com visão geral do projeto |
+| `/catalog` | Catálogo interativo com busca e filtros |
+| `/badge` | Pré-visualização de qualquer badge por parâmetros de URL |
+| `/api/badge` | Endpoint da serverless function — retorna o SVG |
 
 **Fluxo da API:**
 
@@ -430,7 +469,7 @@ npm install
 npm run dev
 ```
 
-> **Atenção:** o endpoint `/api/badge` requer o runtime da Vercel. Use a [Vercel CLI](https://vercel.com/docs/cli) para suporte completo.
+> **Atenção:** o endpoint `/api/badge` requer o runtime da Vercel. Use a [Vercel CLI](https://vercel.com/docs/cli) para suporte completo ao backend local.
 
 ```bash
 npm i -g vercel
@@ -445,46 +484,49 @@ Contribuições são bem-vindas e ajudam a expandir o catálogo da comunidade.
 
 ### Adicionando Nano Courses
 
-1. Adicione os SVGs nos três temas:
-   ```
-   public/assets/certificates/nano/light/{id}.svg
-   public/assets/certificates/nano/dark/{id}.svg
-   public/assets/certificates/nano/black/{id}.svg
-   ```
+Adicione os SVGs nos três temas:
+
+```
+public/assets/certificates/nano/light/{id}.svg
+public/assets/certificates/nano/dark/{id}.svg
+public/assets/certificates/nano/black/{id}.svg
+```
 
 ### Adicionando Challenges
 
-1. Crie a estrutura de diretórios:
-   ```
-   public/assets/certificates/challenge/{year}/{company}/light/{ranking}.svg
-   public/assets/certificates/challenge/{year}/{company}/dark/{ranking}.svg
-   public/assets/certificates/challenge/{year}/{company}/black/{ranking}.svg
-   ```
-2. Inclua os três rankings (1, 2 e 3) para cada tema.
+Crie a estrutura de diretórios com os três rankings para cada tema:
+
+```
+public/assets/certificates/challenge/{year}/{company}/light/{ranking}.svg
+public/assets/certificates/challenge/{year}/{company}/dark/{ranking}.svg
+public/assets/certificates/challenge/{year}/{company}/black/{ranking}.svg
+```
+
+> Rankings `1`, `2` e `3` são obrigatórios para cada empresa e tema.
 
 ### Adicionando Global Solutions
 
-1. Crie a estrutura de diretórios:
-   ```
-   public/assets/certificates/gs/{year}/{topic}/light/1.svg
-   public/assets/certificates/gs/{year}/{topic}/dark/1.svg
-   public/assets/certificates/gs/{year}/{topic}/black/1.svg
-   ```
+```
+public/assets/certificates/gs/{year}/{topic}/light/1.svg
+public/assets/certificates/gs/{year}/{topic}/dark/1.svg
+public/assets/certificates/gs/{year}/{topic}/black/1.svg
+```
 
 ### Regras Gerais
 
-- SVGs devem estar otimizados
+- SVGs devem estar otimizados e abaixo de 300 KB
 - Os três temas (`light`, `dark`, `black`) são obrigatórios
 - Nenhum ID duplicado dentro do mesmo tipo
-- Abra um Pull Request com descrição clara
+- Abra um Pull Request com descrição clara — o template guia o preenchimento
 
 ### Ambiente de Desenvolvimento
 
 ```bash
 npm install     # instalar dependências
-npm run dev     # servidor local
+npm run dev     # servidor local (frontend)
 npm run lint    # lint
 npm run build   # build de produção
+vercel dev      # servidor local com suporte ao endpoint /api/badge
 ```
 
 ---
