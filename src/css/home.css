@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 }
-
+ 
 .home-content {
     display: flex;
     flex-direction: column;
@@ -97,7 +97,9 @@
 
 .home-presentation-badges {
     display: flex;
+    justify-content: center;
     align-items: end;
+    width: 500px;
 }
 
 .home-presentation-badges img {
