@@ -24,7 +24,7 @@ function buildBadgeUrl({ type, year, company, topic, badgeId, theme }) {
       params.set('badge', 'challenge')
       params.set('year', year)
       params.set('company', company)
-      params.set('ranking', '1')
+      params.set('ranking', badgeId)
       break
 
     default:
