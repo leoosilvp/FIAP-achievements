@@ -2,10 +2,8 @@ import '../css/home.css'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 import { GitPullRequest, Search, Award, Users, Star, ArrowRight, Grid } from '@geist-ui/icons'
-import badge1 from '../../public/assets/certificates/gs/2025/future-of-work/black/1.svg'
-import badge2 from '../../public/assets/certificates/challenge/2026/totvs/dark/1.svg'
-import badge3 from '../../public/assets/certificates/challenge/2026/jovi/light/1.svg'
 import Footer from '../components/Footer'
+import { PullRequest } from '@carbon/icons-react'
 
 const features = [
   {
@@ -81,39 +79,37 @@ const Home = () => {
 
       <div className='home-content'>
         <section className='home-presentation'>
-          <div className='home-presentation-left'>
-            <h1>Seu esforço acadêmico agora faz parte do seu portfólio</h1>
+          <div />
+          <div className='home-presentation-content'>
+            <section className='home-presentation-left-content'>
+              <h1>Certificados<br />De Conquistas</h1>
+              <div>
+                <Link className='active'>Badges</Link>
+                <Link><PullRequest size={16} />Contribuir</Link>
+              </div>
+            </section>
 
-            <p>
-              Seus certificados não deveriam ficar perdidos em PDFs. Organize e
-              exiba suas conquistas da FIAP em uma experiência visual feita para
-              estudantes e desenvolvedores.
-            </p>
-
-            <div className='home-presentation-buttons'>
-              <Link to='/catalog' className='active'>
-                <Grid size={19} />
-                Catálogo de Badges
-              </Link>
-
-              <Link to='https://github.com/leoosilvp/FIAP-achievements' target='_blank' >
-                <GitPullRequest size={19} />
-                Tem uma ideia? abra um P.R.
-              </Link>
-            </div>
-
-            <h3>
-              Aplicação independente desenvolvida pela comunidade FIAP, sem
-              vínculo institucional oficial.
-            </h3>
+            <section className='home-presentation-right-content'>
+              <article>
+                <h1>Badges organizadas <span>para destacar cada conquista acadêmica de forma clara e acessível.</span></h1>
+              </article>
+              <article>
+                <h1>Conquistas em destaque <span>através de uma coleção de badges conquistadas na FIAP.</span></h1>
+              </article>
+              <article>
+                <h1>Cada badge importa <span>representando um marco da sua jornada acadêmica na FIAP.</span></h1>
+              </article>
+            </section>
           </div>
 
-          <div className='home-presentation-right'>
-            <section className='home-presentation-badges'>
-              <img src={badge2} draggable={false} alt='Badge FIAP Future of Work 2025' />
-              <img src={badge1} draggable={false} alt='Badge FIAP Future of Work 2025' />
-              <img src={badge3} draggable={false} alt='Badge FIAP Future of Work 2025' />
-            </section>
+          <div className='home-presentation-logos'>
+            <img draggable={false} src="https://companieslogo.com/img/orig/TOTS3.SA_BIG.D-b21debeb.png?t=1720244494" />
+            <img draggable={false} className='light' src="https://cdn.freebiesupply.com/images/large/2x/oracle-logo-black-transparent.png" />
+            <img draggable={false} src="https://content.b3.com.br/wp-content/uploads/2026/01/Logo-B3-300x258-1.png" />
+            <img draggable={false} className='light' src="https://logodownload.org/wp-content/uploads/2014/04/ibm-logo-1.png" />
+            <img draggable={false} className='light' src="https://freepngimg.com/thumb/ford/28457-6-ford-logo-file.png" />
+            <img draggable={false} src="https://companieslogo.com/img/orig/SAN_BIG.D-fd4311d2.png?t=1720244493" />
+            <img draggable={false} className='light' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Vivo_Horizontal_Black_RGB.svg/250px-Vivo_Horizontal_Black_RGB.svg.png" />
           </div>
         </section>
 

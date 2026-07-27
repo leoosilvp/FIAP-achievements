@@ -1,32 +1,23 @@
-import logo from '../../public/assets/svg/logo.svg'
+import logo from '../../public/assets/svg/icon.svg'
 import { Link } from 'react-router-dom'
-import { Github } from '@geist-ui/icons'
-import { useEffect, useState } from 'react'
 
 const Header = () => {
 
-    const [isScrolled, setIsScrolled] = useState(false)
-
-    useEffect(() => {
-        const onScroll = () => setIsScrolled(window.scrollY > 64)
-        window.addEventListener('scroll', onScroll)
-        return () => window.removeEventListener('scroll', onScroll)
-    }, [])
-
     return (
-        <header className={`header-main ${isScrolled ? 'header-main-scrolled' : ''}`}>
-            <Link to='/home'>
-                <img src={logo} draggable={false} />
-            </Link>
-            <nav>
-                <ul>
-                    <Link to='/catalog'>Catálogo</Link>
-                    <Link to='https://canva.link/8nb1a3rlbru5tsh' target='_blank'>Canva</Link>
-                    <Link to='https://fiap-csm.symplicity.com/students/' target='_blank'>Talent Lab</Link>
-                    <Link to='https://on.fiap.com.br/' target='_blank'>FIAP ON</Link>
-                    <Link to='https://github.com/leoosilvp/FIAP-achievements' target='_blank'><Github size={16} /></Link>
-                </ul>
-            </nav>
+        <header className="header-main">
+            <section className='header-content'>
+                <img draggable={false} src={logo} />
+
+                <nav className='header-nav'>
+                    <Link>Início</Link>
+                    <Link>Catálogo</Link>
+                    <Link to='badge?badge=nano'>Badge Nano</Link>
+                    <Link>FIAP ON</Link>
+                    <Link>Talent Lab</Link>
+                </nav>
+            </section>
+
+            <button>GitHub</button>
         </header>
     )
 }
