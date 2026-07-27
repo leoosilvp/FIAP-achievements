@@ -13,7 +13,7 @@
     width: 100vw;
     max-width: 1300px;
     height: 100dvh;
-    max-height: 700px;
+    max-height: 800px;
     background-image: url('../assets/img/background.png');
     background-size: cover;
     background-position: center;
@@ -28,10 +28,10 @@
 }
 
 .home-presentation-left-content h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 400;
     line-height: 1.2;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 }
 
 .home-presentation-left-content div {
@@ -235,7 +235,7 @@
 }
 
 .home-process-number {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 200;
     line-height: 1;
     letter-spacing: -0.05em;
@@ -320,6 +320,7 @@
 
 .home-categories {
     border-top: 1px solid #111;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 .home-categories-grid {

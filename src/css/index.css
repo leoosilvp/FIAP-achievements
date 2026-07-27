@@ -41,6 +41,11 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
     background: #111111;
     border-radius: 0px;
+    cursor: pointer;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #141414;
 }
 
 .erro-content {
@@ -60,16 +65,22 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     right: 0;
     display: flex;
+    justify-content: center;
     width: 100vw;
-    max-width: 1350px;
     padding: 20px 30px;
-    justify-content: space-between;
     background: linear-gradient(0deg, #000000dd, #000);
     backdrop-filter: blur(5px);
     z-index: 10;
 }
 
 .header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1350px;
+}
+
+.header-left-content {
     display: flex;
     gap: 25px;
 }
@@ -101,9 +112,10 @@ body::-webkit-scrollbar-thumb {
     font-family: "Inter", sans-serif;
     display: flex;
     align-items: center;
+    gap: 7px;
     justify-content: center;
     height: 30px;
-    padding: 0 30px;
+    padding: 0 25px;
     font-size: 0.85rem;
     font-weight: 400;
     border: none;

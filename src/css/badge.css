@@ -60,6 +60,7 @@
 }
 
 .badge-table-wrapper {
+    font-family: "IBM Plex Mono", monospace;
     width: 100%;
     overflow-x: auto;
 }
