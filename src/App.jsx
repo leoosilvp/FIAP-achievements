@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import ChangeTitle from "./hooks/ChangeTitle"
 import Home from "./routes/Home"
 import Catalog from "./routes/Catalog"
 import Badges from "./routes/Badges"
@@ -7,6 +8,7 @@ import Error from "./routes/Error"
 const App = () => {
   return (
     <BrowserRouter>
+      <ChangeTitle />
       <Routes>
         <Route path='*' element={<Error />} />
         <Route path='/' element={<Navigate to='/home' />} />

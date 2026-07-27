@@ -1,8 +1,9 @@
 import '../css/badge.css'
 import { useEffect, useMemo, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Loader, AlertTriangle, Copy, Check, ChevronLeft } from '@geist-ui/icons'
+import { Navigate, useLocation } from 'react-router-dom'
+import { Loader, AlertTriangle, Copy, Check } from '@geist-ui/icons'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const BASE_URL = 'https://fiap-achievements.vercel.app/api/badge'
 
@@ -42,7 +43,6 @@ const THEMES = [
 
 const Badges = () => {
   const location = useLocation()
-  const navigate = useNavigate()
 
   const query = useMemo(() => new URLSearchParams(location.search), [location.search])
 
@@ -93,12 +93,13 @@ const Badges = () => {
   }
 
   const title = useMemo(() => {
-    if (!type) return 'Badges'
     if (type === 'gs') return 'Global Solution'
     if (type === 'challenge') return 'Challenge'
     if (type === 'nano') return 'Nano Course'
     return 'Badges'
   }, [type])
+
+  if (!type) return <Navigate to='/catalog' />
 
   if (loading)
     return (
@@ -119,7 +120,7 @@ const Badges = () => {
         <Header />
         <section className='badge-content'>
           <div className='badge-empty'>
-            <AlertTriangle size={40} color='#e9cf08'/>
+            <AlertTriangle size={40} color='#e9cf08' />
             <h3>Erro ao carregar badges</h3>
             <p>Tente novamente mais tarde</p>
           </div>
@@ -132,13 +133,6 @@ const Badges = () => {
       <Header />
       <section className='badge-content'>
         <div className='badge-header'>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className='badge-tag'>{title}</span>
-            <button onClick={() => navigate('/catalog')} className='badge-back-btn'>
-              <ChevronLeft size={16} />
-              Voltar
-            </button>
-          </div>
           <h1>{data.title || title}</h1>
           <p>Total de conquistas disponíveis nesta categoria</p>
         </div>
@@ -199,8 +193,10 @@ const Badges = () => {
               )}
             </tbody>
           </table>
+          <button className='scroolToTop' onClick={() => window.scrollTo({ top: 0 })}>Voltar ao topo</button>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

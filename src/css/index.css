@@ -22,6 +22,8 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
     font-family: "Poppins", sans-serif;
     width: 100vw;
     min-height: 100vh;

@@ -1,7 +1,8 @@
 import '../css/catalog.css'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { Search, Filter, Award, Loader, BookOpen, Globe, AlertTriangle } from '@geist-ui/icons'
+import { Badge, Book, Filter, Search, WarningAlt, Wikis } from '@carbon/icons-react'
+import { Loader } from '@geist-ui/icons'
 import { Link } from 'react-router-dom'
 import { useCatalog } from '../hooks/useCatalog'
 
@@ -34,7 +35,7 @@ const Catalog = () => {
         <Header />
         <section className='catalog-content'>
           <div className='catalog-empty'>
-            <AlertTriangle size={40} color='#e9cf08' />
+            <WarningAlt size={40} color='#e9cf08' />
             <h3>Erro ao carregar catálogo!</h3>
             <p>Tente novamente mais tarde</p>
           </div>
@@ -48,9 +49,8 @@ const Catalog = () => {
       <Header />
       <section className='catalog-content'>
         <div className='catalog-header'>
-          <span className='catalog-tag'>Catálogo</span>
-          <h1>Explore suas badges acadêmicas</h1>
-          <p>Todas as conquistas da sua jornada na FIAP organizadas por categoria, ano e tipo de desafio.</p>
+          <h1>Explore suas badges<br />acadêmicas</h1>
+          <p>Todas as conquistas da sua jornada na FIAP organizadas<br />por categoria, ano e tipo de desafio.</p>
         </div>
 
         <div className='catalog-filters'>
@@ -75,11 +75,11 @@ const Catalog = () => {
             if (type === 'nano') {
               return (
                 <section className='catalog-grid-main' key='nano'>
-                  <h1>Nano Course</h1>
+                  <h1>Nano Course<div className='hr' /></h1>
                   <div className='catalog-grid'>
                     <Link to='/badge?badge=nano' className='catalog-card'>
                       <div className='catalog-card-icon'>
-                        <BookOpen size={20} />
+                        <Book size={20} />
                       </div>
                       <div className='catalog-card-content'>
                         <h3>Nano Courses</h3>
@@ -98,12 +98,12 @@ const Catalog = () => {
                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, topics]) => (
                   <section className='catalog-grid-main' key={`${type}-${year}`}>
-                    <h1>Challenge {year}</h1>
+                    <h1>Challenge {year}<div className='hr' /></h1>
                     <div className='catalog-grid'>
                       {topics.map((topic) => (
                         <Link key={`${type}-${year}-${topic.slug}`} to={`/badge?badge=challenge&year=${year}&company=${topic.slug}`} className='catalog-card'>
                           <div className='catalog-card-icon'>
-                            <Award size={20} />
+                            <Badge size={20} />
                           </div>
                           <div className='catalog-card-content'>
                             <h3>{topic.title}</h3>
@@ -124,12 +124,12 @@ const Catalog = () => {
                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, topics]) => (
                   <section className='catalog-grid-main' key={`${type}-${year}`}>
-                    <h1>Global Solution {year}</h1>
+                    <h1>Global Solution {year}<div className='hr' /></h1>
                     <div className='catalog-grid'>
                       {topics.map((topic) => (
                         <Link key={`${type}-${year}-${topic.slug}`} to={`/badge?badge=gs&year=${year}&topic=${topic.slug}`} className='catalog-card'>
                           <div className='catalog-card-icon'>
-                            <Globe size={20} />
+                            <Wikis size={20} />
                           </div>
                           <div className='catalog-card-content'>
                             <h3>{topic.title}</h3>

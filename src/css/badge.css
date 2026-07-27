@@ -1,37 +1,31 @@
 .badge-main {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    max-width: 1300px;
 }
 
 .badge-content {
+    margin: 120px 0;
     width: 100%;
-    padding: 120px 80px 80px;
+    padding: 0 80px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
 }
 
 .badge-header {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-}
-
-.badge-tag {
-    width: fit-content;
-    padding: 4px 12px;
-    border: 1px solid #1a1a1a;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    color: #777;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    gap: 10px;
 }
 
 .badge-header h1 {
-    font-size: 2.2rem;
-    font-weight: 500;
+    font-size: 2.7rem;
+    font-weight: 400;
+    line-height: 1.2;
     color: var(--light-color);
 }
 
@@ -39,27 +33,7 @@
     font-size: 0.9rem;
     font-weight: 300;
     color: #777;
-    line-height: 1.7;
-}
-
-.badge-back-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #1a1a1a;
-    background: #050505;
-    color: #aaa;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.badge-back-btn:hover {
-    border-color: #2a2a2a;
-    color: #fff;
-    background: #0a0a0a;
+    line-height: 1.5;
 }
 
 .badge-loading,
@@ -95,7 +69,6 @@
     border-collapse: collapse;
     background: #050505;
     border: 1px solid #111;
-    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -111,7 +84,7 @@
     color: #777;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #141414;
 }
 
 .badge-row {
@@ -171,8 +144,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    border: 1px solid #1a1a1a;
+    border: 1px solid #141414;
     background: transparent;
     color: #888;
     cursor: pointer;
@@ -180,7 +152,24 @@
 }
 
 .badge-copy-btn:hover {
-    background: #0c0c0c;
-    border-color: #2a2a2a;
+    background: #070707;
+    border-color: #1e1e1e;
     color: #ddd;
+}
+
+.scroolToTop {
+    margin-top: 30px;
+    display: flex;
+    width: fit-content;
+    padding: 10px 30px;
+    border: 1px solid #141414;
+    background: transparent;
+    color: var(--gray-color-2);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.scroolToTop:hover {
+    border-color: #1e1e1e;
+    color: var(--gray-color-1);
 }

@@ -13,7 +13,7 @@ const Header = () => {
                 <nav className='header-nav'>
                     <Link to='/home'>Início</Link>
                     <Link to='/catalog'>Catálogo</Link>
-                    <Link to='/catalog/badge?badge=nano'>Badge Nano</Link>
+                    <Link to='/badge?badge=nano'>Badge Nano</Link>
                     <Link to='https://on.fiap.com.br/' target='_blank'>FIAP ON</Link>
                     <Link to='https://fiap-csm.symplicity.com/students/?signin_tab=0' target='_blank'>Talent Lab</Link>
                     <Link to='https://gitcv-app.vercel.app/' target='_blank'>GitCV</Link>

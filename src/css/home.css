@@ -340,7 +340,7 @@
     cursor: pointer;
 }
 
-.home-categories-card:hover {
+.home-categories-card:hover { 
     background: #070707;
     border-color: #141414;
     transform: translateY(-2px);
