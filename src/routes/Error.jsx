@@ -6,8 +6,8 @@ const Error = () => {
   return (
     <main className="error-page">
       <header>
-        <Link to='/'>
-          <img src={logo} alt="logo-snakr" draggable={false} />
+        <Link to='/home'>
+          <img src={logo} draggable={false} />
         </Link>
       </header>
 

@@ -42,6 +42,9 @@ const Footer = () => {
                             <Link to='https://github.com/leoosilvp/FIAP-achievements/pulls' target='_blank' rel='noopener noreferrer'>
                                 Abrir Pull Request
                             </Link>
+                            <Link to='https://gitcv-app.vercel.app/' target='_blank' rel='noopener noreferrer'>
+                                GitCV
+                            </Link>
                         </nav>
                     </article>
                 </div>
