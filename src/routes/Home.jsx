@@ -82,8 +82,8 @@ const Home = () => {
           <section className='home-presentation-left-content'>
             <h1>Certificados<br />De Conquistas</h1>
             <div>
-              <Link className='active'>Badges</Link>
-              <Link><PullRequest size={16} />Contribuir</Link>
+              <Link to='/catalog' className='active'>Badges</Link>
+              <Link to='https://github.com/leoosilvp/FIAP-achievements' target='_blank'><PullRequest size={16} />Contribuir</Link>
             </div>
           </section>
 

@@ -6,18 +6,20 @@ const Header = () => {
     return (
         <header className="header-main">
             <section className='header-content'>
-                <img draggable={false} src={logo} />
+                <Link to='/home'>
+                    <img draggable={false} src={logo} />
+                </Link>
 
                 <nav className='header-nav'>
-                    <Link>Início</Link>
-                    <Link>Catálogo</Link>
-                    <Link to='badge?badge=nano'>Badge Nano</Link>
-                    <Link>FIAP ON</Link>
-                    <Link>Talent Lab</Link>
+                    <Link to='/home'>Início</Link>
+                    <Link to='/catalog'>Catálogo</Link>
+                    <Link to='/catalog/badge?badge=nano'>Badge Nano</Link>
+                    <Link to='https://on.fiap.com.br/'>FIAP ON</Link>
+                    <Link to='https://fiap-csm.symplicity.com/students/?signin_tab=0'>Talent Lab</Link>
                 </nav>
             </section>
 
-            <button>GitHub</button>
+            <button onClick={()=> window.open('https://github.com/leoosilvp/FIAP-achievements')}>GitHub</button>
         </header>
     )
 }
