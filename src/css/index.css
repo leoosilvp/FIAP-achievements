@@ -38,7 +38,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     background: #111111;
-    border-radius: 20px;
+    border-radius: 0px;
 }
 
 .erro-content {
@@ -211,7 +211,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 15px 20px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -220,7 +220,8 @@ body::-webkit-scrollbar-thumb {
 
 .error-page header img {
     display: flex;
-    width: 210px;
+    width: 35px;
+    filter: invert(1);
 }
 
 .error-page-content {
@@ -250,7 +251,7 @@ body::-webkit-scrollbar-thumb {
 .error-page-btns {
     margin-top: 20px;
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .error-page-btns a {
@@ -259,7 +260,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     padding: 5px 15px;
     border: 1px solid #333333;
-    border-radius: 30px;
+    border-radius: 0px;
     font-size: 0.8rem;
     font-weight: 400;
     color: var(--gray-color);
