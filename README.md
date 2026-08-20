@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="./public/assets/svg/logo.svg"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://fiap-achievements.vercel.app/api/badge?badge=294870&theme=dark" width="100"/>
+  <img src="./public/assets/svg/logo.svg" width='220px'/>
 </p>
 
 <br/>
