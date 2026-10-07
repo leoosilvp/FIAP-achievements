@@ -1,6 +1,6 @@
 import '../css/badge.css'
 import { useEffect, useMemo, useState } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { Loader, AlertTriangle, Copy, Check } from '@geist-ui/icons'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -36,13 +36,16 @@ function buildBadgeUrl({ type, year, company, topic, badgeId, theme }) {
 }
 
 const THEMES = [
-  { name: 'Black', key: 'black' },
   { name: 'Dark', key: 'dark' },
-  { name: 'Light', key: 'light' },
+  { name: 'Black', key: 'black' },
+  { name: 'Light', key: 'light' }
 ]
+
+const DEFAULT_THEME = THEMES[0]
 
 const Badges = () => {
   const location = useLocation()
+  const [, setSearchParams] = useSearchParams()
 
   const query = useMemo(() => new URLSearchParams(location.search), [location.search])
 
@@ -50,6 +53,11 @@ const Badges = () => {
   const year = query.get('year')
   const company = query.get('company')
   const topic = query.get('topic')
+
+  const activeTheme = useMemo(() => {
+    const requested = query.get('theme')?.toLowerCase()
+    return THEMES.find((t) => t.key === requested) || DEFAULT_THEME
+  }, [query])
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -90,6 +98,19 @@ const Badges = () => {
     navigator.clipboard.writeText(text)
     setCopiedMap((prev) => ({ ...prev, [key]: true }))
     setTimeout(() => setCopiedMap((prev) => ({ ...prev, [key]: false })), 1200)
+  }
+
+  const changeTheme = (themeKey) => {
+    if (themeKey === activeTheme.key) return
+
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        next.set('theme', themeKey)
+        return next
+      },
+      { replace: true }
+    )
   }
 
   const title = useMemo(() => {
@@ -137,6 +158,20 @@ const Badges = () => {
           <p>Total de conquistas disponíveis nesta categoria</p>
         </div>
 
+        <div className='badge-theme-switcher' role='group' aria-label='Selecionar tema das badges'>
+          {THEMES.map((t) => (
+            <button
+              key={t.key}
+              type='button'
+              className={`badge-theme-btn ${activeTheme.key === t.key ? 'active' : ''}`}
+              onClick={() => changeTheme(t.key)}
+              aria-pressed={activeTheme.key === t.key}
+            >
+              {t.name}
+            </button>
+          ))}
+        </div>
+
         <div className='badge-table-wrapper'>
           <table className='badge-table'>
             <thead>
@@ -149,48 +184,46 @@ const Badges = () => {
               </tr>
             </thead>
             <tbody>
-              {data.badges?.flatMap((badge, index) =>
-                THEMES.map((t, i) => {
-                  const src = badge.themes?.[t.key]
-                  const url = buildBadgeUrl({
-                    type,
-                    year,
-                    company,
-                    topic,
-                    badgeId: badge.id,
-                    theme: t.key,
-                  })
-                  const key = `${badge.id}-${t.key}`
-
-                  return (
-                    <tr key={`${index}-${i}`} className='badge-row'>
-                      <td>{badge.id}º</td>
-                      <td>
-                        <span className={`badge-theme badge-theme-${t.key}`}>{t.name}</span>
-                      </td>
-                      <td>
-                        {src ? (
-                          <img src={src} alt={t.name} className='badge-table-preview' draggable={false} />
-                        ) : (
-                          <span className='badge-theme-missing'>—</span>
-                        )}
-                      </td>
-                      <td className='badge-url-cell'>
-                        <code>{url}</code>
-                      </td>
-                      <td>
-                        <button
-                          className='badge-copy-btn'
-                          onClick={() => copyToClipboard(url, key)}
-                          aria-label={`Copiar URL ${t.name}`}
-                        >
-                          {copiedMap[key] ? <Check size={14} /> : <Copy size={14} />}
-                        </button>
-                      </td>
-                    </tr>
-                  )
+              {data.badges?.map((badge, index) => {
+                const src = badge.themes?.[activeTheme.key]
+                const url = buildBadgeUrl({
+                  type,
+                  year,
+                  company,
+                  topic,
+                  badgeId: badge.id,
+                  theme: activeTheme.key,
                 })
-              )}
+                const key = `${badge.id}-${activeTheme.key}`
+
+                return (
+                  <tr key={`${index}-${activeTheme.key}`} className='badge-row'>
+                    <td>{badge.id}º</td>
+                    <td>
+                      <span className={`badge-theme badge-theme-${activeTheme.key}`}>{activeTheme.name}</span>
+                    </td>
+                    <td>
+                      {src ? (
+                        <img src={src} alt={activeTheme.name} className='badge-table-preview' draggable={false} />
+                      ) : (
+                        <span className='badge-theme-missing'>—</span>
+                      )}
+                    </td>
+                    <td className='badge-url-cell'>
+                      <code>{url}</code>
+                    </td>
+                    <td>
+                      <button
+                        className='badge-copy-btn'
+                        onClick={() => copyToClipboard(url, key)}
+                        aria-label={`Copiar URL ${activeTheme.name}`}
+                      >
+                        {copiedMap[key] ? <Check size={14} /> : <Copy size={14} />}
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
           <button className='scroolToTop' onClick={() => window.scrollTo({ top: 0 })}>Voltar ao topo</button>

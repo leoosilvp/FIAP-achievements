@@ -107,7 +107,7 @@ const Home = () => {
           <img draggable={false} className='light' src="https://logodownload.org/wp-content/uploads/2014/04/ibm-logo-1.png" />
           <img draggable={false} className='light' src="https://freepngimg.com/thumb/ford/28457-6-ford-logo-file.png" />
           <img draggable={false} src="https://companieslogo.com/img/orig/SAN_BIG.D-fd4311d2.png?t=1720244493" />
-          <img draggable={false} className='light' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Vivo_Horizontal_Black_RGB.svg/250px-Vivo_Horizontal_Black_RGB.svg.png" />
+          <img draggable={false} src="https://www.pngall.com/wp-content/uploads/15/Azure-Logo-PNG-Pic.png" />
         </div>
       </section>
 
