@@ -1,8 +1,11 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+
+// - Cache em módulo (compartilhado entre instâncias do hook) --------------
 
 const cache = {
     data: null,
     timestamp: null,
+    inflight: null,
     TTL_MS: 5 * 60 * 1000, // 5 min
 }
 
@@ -10,54 +13,102 @@ function isCacheValid() {
     return cache.data !== null && Date.now() - cache.timestamp < cache.TTL_MS
 }
 
+function normalizeText(value) {
+    return value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+}
+
+const EMPTY_CATALOG = { nano: {}, challenge: {}, gs: {}, ic: {} }
+
+/**
+ * Busca o catálogo em /api/catalog, deduplicando requisições concorrentes
+ * entre instâncias do hook e respeitando o TTL do cache em módulo.
+ */
+async function fetchCatalog({ signal, force = false } = {}) {
+    if (!force && isCacheValid()) return cache.data
+
+    if (!cache.inflight) {
+        cache.inflight = (async () => {
+            const response = await fetch('/api/catalog')
+
+            let body = null
+            try {
+                body = await response.json()
+            } catch {
+                // corpo não é JSON válido; segue com body = null
+            }
+
+            if (!response.ok || !body?.success) {
+                throw new Error(body?.message ?? `Falha ao buscar catálogo (HTTP ${response.status})`)
+            }
+
+            cache.data = body.data
+            cache.timestamp = Date.now()
+            return cache.data
+        })()
+
+        cache.inflight.finally(() => {
+            cache.inflight = null
+        })
+    }
+
+    return signal
+        ? Promise.race([
+            cache.inflight,
+            new Promise((_, reject) => {
+                signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')))
+            }),
+        ])
+        : cache.inflight
+}
+
 export const useCatalog = () => {
     const [search, setSearch] = useState('')
-    const [catalog, setCatalog] = useState(() => cache.data ?? {})
+    const [catalog, setCatalog] = useState(() => cache.data ?? EMPTY_CATALOG)
     const [loading, setLoading] = useState(() => !isCacheValid())
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(null)
 
-    useEffect(() => {
-        if (isCacheValid()) return
-
-        const controller = new AbortController()
-
-        const fetchCatalog = async () => {
-            try {
-                setLoading(true)
-                setError(false)
-
-                const response = await fetch('/api/catalog', {
-                    signal: controller.signal,
-                })
-
-                if (!response.ok) throw new Error('Failed to fetch catalog')
-
-                const result = await response.json()
-
-                if (!result.success) throw new Error(result.message)
-
-                cache.data = result.data
-                cache.timestamp = Date.now()
-
-                setCatalog(result.data)
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    console.error('[useCatalog]', err)
-                    setError(true)
-                }
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetchCatalog()
-
-        return () => {
-            controller.abort()
-        }
+    // Nunca chama setState de forma síncrona: todo setState acontece dentro
+    // de .then/.catch/.finally, após a resolução da Promise.
+    const run = useCallback((controller, options) => {
+        fetchCatalog({ signal: controller.signal, ...options })
+            .then((data) => {
+                if (controller.signal.aborted) return
+                setCatalog(data)
+                setError(null)
+            })
+            .catch((err) => {
+                if (err.name === 'AbortError') return
+                console.error('[useCatalog]', err)
+                setError(err.message)
+            })
+            .finally(() => {
+                if (!controller.signal.aborted) setLoading(false)
+            })
     }, [])
 
+    useEffect(() => {
+        if (isCacheValid()) return undefined
+
+        const controller = new AbortController()
+        run(controller, {})
+        return () => controller.abort()
+    }, [run])
+
+    // Disparado por ação do usuário (fora de um efeito), então pode setar
+    // loading/error de forma síncrona sem gerar cascading renders.
+    const refetch = useCallback(() => {
+        const controller = new AbortController()
+        setLoading(true)
+        setError(null)
+        run(controller, { force: true })
+        return controller
+    }, [run])
+
     const filteredCatalog = useMemo(() => {
+        const query = normalizeText(search)
         const filtered = {}
 
         Object.entries(catalog).forEach(([type, years]) => {
@@ -70,7 +121,7 @@ export const useCatalog = () => {
 
             Object.entries(years).forEach(([year, topics]) => {
                 const filteredTopics = topics.filter((topic) =>
-                    topic.title.toLowerCase().includes(search.toLowerCase())
+                    normalizeText(topic.title).includes(query)
                 )
 
                 if (filteredTopics.length > 0) {
@@ -100,5 +151,6 @@ export const useCatalog = () => {
         loading,
         error,
         hasResults,
+        refetch,
     }
 }

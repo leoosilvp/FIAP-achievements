@@ -139,6 +139,7 @@
 }
 
 .catalog-card {
+    font-family: "IBM Plex Mono", monospace;
     display: flex;
     flex-direction: column;
     width: 250px;
@@ -173,6 +174,7 @@
 }
 
 .catalog-meta {
+    margin-top: 3px;
     display: flex;
     justify-content: space-between;
     font-size: 0.75rem;
