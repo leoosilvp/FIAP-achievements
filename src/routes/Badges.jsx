@@ -4,6 +4,7 @@ import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { Loader, AlertTriangle, Copy, Check } from '@geist-ui/icons'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { Search } from '@carbon/icons-react'
 
 const BASE_URL = 'https://fiap-achievements.vercel.app/api/badge'
 
@@ -35,13 +36,25 @@ function buildBadgeUrl({ type, year, company, topic, badgeId, theme }) {
   return `${BASE_URL}?${params.toString()}`
 }
 
+function normalizeText(value) {
+  return (value ?? '')
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+}
+
 const THEMES = [
-  { name: 'Dark', key: 'dark' },
+  { name: 'Light', key: 'light' },
   { name: 'Black', key: 'black' },
-  { name: 'Light', key: 'light' }
+  { name: 'Dark', key: 'dark' },
+  { name: 'Carbon', key: 'carbon' },
+  { name: 'Pink', key: 'pink' },
+  { name: 'Panda', key: 'panda' },
+  { name: 'Dracula', key: 'dracula' }
 ]
 
-const DEFAULT_THEME = THEMES[0]
+const DEFAULT_THEME = THEMES[3]
 
 const Badges = () => {
   const location = useLocation()
@@ -63,6 +76,7 @@ const Badges = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [copiedMap, setCopiedMap] = useState({})
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const fetchBadges = async () => {
@@ -93,6 +107,23 @@ const Badges = () => {
 
     fetchBadges()
   }, [type, year, company, topic])
+
+  // Busca por nome (pt-br), nome (en) e id — só se aplica a Nano Courses,
+  // único tipo cujas badges têm nome (gs/challenge têm apenas ranking).
+  const filteredBadges = useMemo(() => {
+    const badges = data?.badges ?? []
+
+    if (type !== 'nano' || !searchTerm.trim()) return badges
+
+    const term = normalizeText(searchTerm)
+
+    return badges.filter((badge) => {
+      const matchesId = normalizeText(badge.id).includes(term)
+      const matchesEn = normalizeText(badge.name).includes(term)
+      const matchesPt = normalizeText(badge.name_pt).includes(term)
+      return matchesId || matchesEn || matchesPt
+    })
+  }, [data, searchTerm, type])
 
   const copyToClipboard = (text, key) => {
     navigator.clipboard.writeText(text)
@@ -158,19 +189,33 @@ const Badges = () => {
           <p>Total de conquistas disponíveis nesta categoria</p>
         </div>
 
-        <div className='badge-theme-switcher' role='group' aria-label='Selecionar tema das badges'>
-          {THEMES.map((t) => (
-            <button
-              key={t.key}
-              type='button'
-              className={`badge-theme-btn ${activeTheme.key === t.key ? 'active' : ''}`}
-              onClick={() => changeTheme(t.key)}
-              aria-pressed={activeTheme.key === t.key}
-            >
-              {t.name}
-            </button>
-          ))}
-        </div>
+        <section className='badge-header-actions'>
+          <div className='badge-theme-switcher' role='group' aria-label='Selecionar tema das badges'>
+            {THEMES.map((t) => (
+              <button
+                key={t.key}
+                type='button'
+                className={`badge-theme-btn ${activeTheme.key === t.key ? 'active' : ''}`}
+                onClick={() => changeTheme(t.key)}
+                aria-pressed={activeTheme.key === t.key}
+              >
+                {t.name}
+              </button>
+            ))}
+          </div>
+
+          {type === 'nano' &&
+            <article className='catalog-search nano'>
+              <Search size={16} />
+              <input
+                type="text"
+                placeholder='Buscar pelo nome..'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </article>
+          }
+        </section>
 
         <div className='badge-table-wrapper'>
           <table className='badge-table'>
@@ -184,7 +229,7 @@ const Badges = () => {
               </tr>
             </thead>
             <tbody>
-              {data.badges?.map((badge, index) => {
+              {filteredBadges.map((badge, index) => {
                 const src = badge.themes?.[activeTheme.key]
                 const url = buildBadgeUrl({
                   type,
@@ -198,7 +243,7 @@ const Badges = () => {
 
                 return (
                   <tr key={`${index}-${activeTheme.key}`} className='badge-row'>
-                    <td>{badge.id}º</td>
+                    <td>{badge.id}{!badge.name && "º"}</td>
                     <td>
                       <span className={`badge-theme badge-theme-${activeTheme.key}`}>{activeTheme.name}</span>
                     </td>
@@ -224,6 +269,14 @@ const Badges = () => {
                   </tr>
                 )
               })}
+
+              {filteredBadges.length === 0 && (
+                <tr>
+                  <td colSpan={5} className='badge-empty-row'>
+                    Nenhum resultado para “{searchTerm}”
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
           <button className='scroolToTop' onClick={() => window.scrollTo({ top: 0 })}>Voltar ao topo</button>

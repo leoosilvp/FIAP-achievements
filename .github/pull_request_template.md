@@ -18,7 +18,9 @@
 
 ### Nano Course
 
-- ID: <!-- ex: 294870 -->
+- ID: <!-- ex: 108275 -->
+- Nome: <!-- ex: Python -->
+- Carga Horaria: <!-- ex: 100h -->
 
 ### Challenge
 
@@ -35,10 +37,6 @@
 
 ## Checklist
 
-- [ ] SVGs adicionados nos três temas (`light`, `dark`, `black`)
-- [ ] Estrutura de pastas segue o padrão do projeto
 - [ ] Nenhum ID duplicado dentro do mesmo tipo
-- [ ] Arquivos SVG não estão vazios e contêm a tag `<svg`
-- [ ] Tamanho de cada SVG abaixo de 300 KB
 - [ ] Preview testado localmente (`vercel dev` ou `npm run dev`)
 - [ ] README atualizado (se necessário)

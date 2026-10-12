@@ -1,0 +1,625 @@
+{
+    "Achievements": {
+        "Nano Courses": {
+            "After Effects & Premiere": {
+                "id": 482731,
+                "name_en": "After Effects & Premiere",
+                "hours": 100
+            },
+            "Agentes Autônomos (Agentic AI)": {
+                "id": 915204,
+                "name_en": "Autonomous Agents (Agentic AI)",
+                "hours": 40
+            },
+            "Algoritmos: Aprenda a programar": {
+                "id": 370618,
+                "name_en": "Algorithms: Learn to Program",
+                "hours": 80
+            },
+            "Android": {
+                "id": 864195,
+                "name_en": "Android",
+                "hours": 80
+            },
+            "Banco de dados Oracle": {
+                "id": 251907,
+                "name_en": "Oracle Database",
+                "hours": 60
+            },
+            "Big Data": {
+                "id": 793412,
+                "name_en": "Big Data",
+                "hours": 60
+            },
+            "Big Data & Analytics": {
+                "id": 640281,
+                "name_en": "Big Data & Analytics",
+                "hours": 60
+            },
+            "Biohacking, Deep Web e Criptografia": {
+                "id": 128573,
+                "name_en": "Biohacking, Deep Web and Cryptography",
+                "hours": 100
+            },
+            "Blockchain": {
+                "id": 507934,
+                "name_en": "Blockchain",
+                "hours": 40
+            },
+            "Branding Analytics": {
+                "id": 986241,
+                "name_en": "Branding Analytics",
+                "hours": 120
+            },
+            "Business Management & IT Services": {
+                "id": 314785,
+                "name_en": "Business Management & IT Services",
+                "hours": 80
+            },
+            "Chatbots": {
+                "id": 752906,
+                "name_en": "Chatbots",
+                "hours": 60
+            },
+            "Cloud Fundamentals": {
+                "id": 820547,
+                "name_en": "Cloud Fundamentals",
+                "hours": 80
+            },
+            "Códigos de Alta Performance": {
+                "id": 469128,
+                "name_en": "High-Performance Code",
+                "hours": 80
+            },
+            "Compliance e Quality Assurance": {
+                "id": 193674,
+                "name_en": "Compliance and Quality Assurance",
+                "hours": 60
+            },
+            "Computação Cognitiva Aplicada ao Marketing": {
+                "id": 991001,
+                "name_en": "Cognitive Computing Applied to Marketing",
+                "hours": 60
+            },
+            "Comunicação e Semiótica": {
+                "id": 605219,
+                "name_en": "Communication and Semiotics",
+                "hours": 60
+            },
+            "Corporate Systems": {
+                "id": 748350,
+                "name_en": "Corporate Systems",
+                "hours": 120
+            },
+            "Customer Experience Management": {
+                "id": 991002,
+                "name_en": "Customer Experience Management",
+                "hours": 40
+            },
+            "Cybersecurity": {
+                "id": 281496,
+                "name_en": "Cybersecurity",
+                "hours": 120
+            },
+            "Cybersecurity Hacker Skills": {
+                "id": 934705,
+                "name_en": "Hacker Skills for Cybersecurity",
+                "hours": 120
+            },
+            "Data Driven Decision": {
+                "id": 517862,
+                "name_en": "Data-Driven Decision Making",
+                "hours": 100
+            },
+            "Data Modeling ": {
+                "id": 162483,
+                "name_en": "Data Modeling",
+                "hours": 60
+            },
+            "Data Visualization": {
+                "id": 703951,
+                "name_en": "Data Visualization",
+                "hours": 80
+            },
+            "Desenvolvimento .NET": {
+                "id": 849216,
+                "name_en": ".NET Development",
+                "hours": 60
+            },
+            "Desenvolvimento Java Enterprise": {
+                "id": 294870,
+                "name_en": "Java Enterprise Development",
+                "hours": 60
+            },
+            "Design Gráfico": {
+                "id": 631728,
+                "name_en": "Graphic Design",
+                "hours": 140
+            },
+            "Design Thinking": {
+                "id": 158904,
+                "name_en": "Design Thinking",
+                "hours": 40
+            },
+            "Design Thinking - Process": {
+                "id": 470315,
+                "name_en": "Design Thinking — Process",
+                "hours": 40
+            },
+            "DevOps": {
+                "id": 925781,
+                "name_en": "DevOps",
+                "hours": 60
+            },
+            "DevOps & Agile Culture": {
+                "id": 386429,
+                "name_en": "DevOps & Agile Culture",
+                "hours": 60
+            },
+            "Django Web Framework": {
+                "id": 714608,
+                "name_en": "Django Web Framework",
+                "hours": 80
+            },
+            "Dominando IoT": {
+                "id": 249537,
+                "name_en": "Mastering IoT",
+                "hours": 80
+            },
+            "Engenharia de Software": {
+                "id": 860192,
+                "name_en": "Software Engineering",
+                "hours": 100
+            },
+            "Estatísticas para Soluções em TI": {
+                "id": 573846,
+                "name_en": "Statistics for IT Solutions",
+                "hours": 100
+            },
+            "Estratégias e Modelos de Negócios": {
+                "id": 108275,
+                "name_en": "Business Strategies and Models",
+                "hours": 100
+            },
+            "Estruturas de Computadores": {
+                "id": 697314,
+                "name_en": "Computer Architecture",
+                "hours": 40
+            },
+            "Ethical Hacking": {
+                "id": 432981,
+                "name_en": "Ethical Hacking",
+                "hours": 80
+            },
+            "Formação Social e Sustentabilidade": {
+                "id": 785063,
+                "name_en": "Social Development and Sustainability",
+                "hours": 80
+            },
+            "Fotografia Digital": {
+                "id": 261840,
+                "name_en": "Digital Photography",
+                "hours": 140
+            },
+            "Front End ": {
+                "id": 918357,
+                "name_en": "Front End",
+                "hours": 80
+            },
+            "Future-Proof Organizations": {
+                "id": 540126,
+                "name_en": "Future-Proof Organizations",
+                "hours": 40
+            },
+            "Game Design": {
+                "id": 374692,
+                "name_en": "Game Design",
+                "hours": 160
+            },
+            "Game Programming": {
+                "id": 829145,
+                "name_en": "Game Programming",
+                "hours": 80
+            },
+            "Games Engines": {
+                "id": 150738,
+                "name_en": "Game Engines",
+                "hours": 80
+            },
+            "Generative AI for Design": {
+                "id": 682491,
+                "name_en": "Generative AI for Design",
+                "hours": 60
+            },
+            "Gestão de Infraestrutura de TI": {
+                "id": 907326,
+                "name_en": "IT Infrastructure Management",
+                "hours": 20
+            },
+            "Gestão de Projetos": {
+                "id": 218574,
+                "name_en": "Project Management",
+                "hours": 100
+            },
+            "Gestão de Riscos e Vulnerabilidades": {
+                "id": 761905,
+                "name_en": "Risk and Vulnerability Management",
+                "hours": 80
+            },
+            "Gestão Financeira de Empresas": {
+                "id": 495183,
+                "name_en": "Corporate Financial Management",
+                "hours": 20
+            },
+            "Governança em TI": {
+                "id": 830617,
+                "name_en": "IT Governance",
+                "hours": 80
+            },
+            "Hardening e Configuração de Servidores": {
+                "id": 146952,
+                "name_en": "Server Hardening and Configuration",
+                "hours": 80
+            },
+            "Infraestrutura e Interconectividade": {
+                "id": 627840,
+                "name_en": "Infrastructure and Interconnectivity",
+                "hours": 80
+            },
+            "Ingestão e Tratamento de Dados": {
+                "id": 903715,
+                "name_en": "Data Ingestion and Processing",
+                "hours": 60
+            },
+            "Inovação Disruptiva": {
+                "id": 284169,
+                "name_en": "Disruptive Innovation",
+                "hours": 80
+            },
+            "Inteligência Artificial e Computacional": {
+                "id": 758230,
+                "name_en": "Artificial and Computational Intelligence",
+                "hours": 80
+            },
+            "Inteligência Artificial Responsável": {
+                "id": 431597,
+                "name_en": "Responsible Artificial Intelligence",
+                "hours": 80
+            },
+            "Inteligência e Contrainteligência": {
+                "id": 812064,
+                "name_en": "Intelligence and Counterintelligence",
+                "hours": 100
+            },
+            "iOS": {
+                "id": 195438,
+                "name_en": "iOS",
+                "hours": 60
+            },
+            "ITIL": {
+                "id": 835758,
+                "name_en": "ITIL",
+                "hours": 40
+            },
+            "Java Advanced Frameworks": {
+                "id": 670821,
+                "name_en": "Java Advanced Frameworks",
+                "hours": 60
+            },
+            "Java Development": {
+                "id": 348275,
+                "name_en": "Java Development",
+                "hours": 60
+            },
+            "Jovens Líderes": {
+                "id": 924560,
+                "name_en": "Young Leaders",
+                "hours": 40
+            },
+            "Leadership and Corporate Accountability": {
+                "id": 503194,
+                "name_en": "Leadership and Corporate Accountability",
+                "hours": 40
+            },
+            "Leadership Communication": {
+                "id": 276841,
+                "name_en": "Leadership Communication",
+                "hours": 40
+            },
+            "Learn to Program": {
+                "id": 861429,
+                "name_en": "Learn to Program",
+                "hours": 60
+            },
+            "Level Design": {
+                "id": 149382,
+                "name_en": "Level Design",
+                "hours": 100
+            },
+            "Libras": {
+                "id": 735018,
+                "name_en": "Libras",
+                "hours": 140
+            },
+            "Liderança Estratégica e Inovadora": {
+                "id": 492673,
+                "name_en": "Strategic and Innovative Leadership",
+                "hours": 8
+            },
+            "Linguagem Audiovisual": {
+                "id": 810254,
+                "name_en": "Audiovisual Language",
+                "hours": 80
+            },
+            "Linguagem Sonora e Musical": {
+                "id": 367981,
+                "name_en": "Sound and Musical Language",
+                "hours": 100
+            },
+            "Linux Fundamentos": {
+                "id": 928143,
+                "name_en": "Linux Fundamentals",
+                "hours": 40
+            },
+            "Marketing em Plataformas de Social Media": {
+                "id": 214690,
+                "name_en": "Marketing on Social Media Platforms",
+                "hours": 60
+            },
+            "Marketing: Conceitos e Prática": {
+                "id": 645372,
+                "name_en": "Marketing: Concepts and Practice",
+                "hours": 160
+            },
+            "Metaverso, Digital Twins and Blockchain": {
+                "id": 179458,
+                "name_en": "Metaverse, Digital Twins and Blockchain",
+                "hours": 60
+            },
+            "Mobile Marketing": {
+                "id": 856024,
+                "name_en": "Mobile Marketing",
+                "hours": 60
+            },
+            "Modelagem 3D": {
+                "id": 390715,
+                "name_en": "3D Modeling",
+                "hours": 80
+            },
+            "Modelagem e Renderização": {
+                "id": 721963,
+                "name_en": "Modeling and Rendering",
+                "hours": 40
+            },
+            "Modelagem e Texturização para Games": {
+                "id": 468250,
+                "name_en": "Modeling and Texturing for Games",
+                "hours": 40
+            },
+            "Multimídia e Criatividade": {
+                "id": 913674,
+                "name_en": "Multimedia and Creativity",
+                "hours": 60
+            },
+            "NOSQL": {
+                "id": 257108,
+                "name_en": "NoSQL",
+                "hours": 40
+            },
+            "Patterns & Frameworks Trends": {
+                "id": 684325,
+                "name_en": "Patterns & Frameworks Trends",
+                "hours": 60
+            },
+            "Perícia Forense em Defesa Cibernética": {
+                "id": 140892,
+                "name_en": "Forensic Analysis in Cyber Defense",
+                "hours": 80
+            },
+            "Pitch and Storytelling": {
+                "id": 798451,
+                "name_en": "Pitch and Storytelling",
+                "hours": 80
+            },
+            "Planejamento Estratégico em Marketing": {
+                "id": 325740,
+                "name_en": "Strategic Planning in Marketing",
+                "hours": 80
+            },
+            "Programação para Jogos Digitais": {
+                "id": 907158,
+                "name_en": "Programming for Digital Games",
+                "hours": 80
+            },
+            "Programação Web": {
+                "id": 561239,
+                "name_en": "Web Programming",
+                "hours": 60
+            },
+            "Python": {
+                "id": 284705,
+                "name_en": "Python",
+                "hours": 80
+            },
+            "Python Development": {
+                "id": 736418,
+                "name_en": "Python Development",
+                "hours": 80
+            },
+            "Realidade Virtual": {
+                "id": 410593,
+                "name_en": "Virtual Reality",
+                "hours": 60
+            },
+            "Redes de Computadores": {
+                "id": 862174,
+                "name_en": "Computer Networks",
+                "hours": 60
+            },
+            "Resolvendo Problemas com Matemática": {
+                "id": 193820,
+                "name_en": "Solving Problems with Mathematics",
+                "hours": 60
+            },
+            "Responsive Web Development": {
+                "id": 675431,
+                "name_en": "Responsive Web Development",
+                "hours": 80
+            },
+            "Roteiro para Multimídia": {
+                "id": 248960,
+                "name_en": "Scriptwriting for Multimedia",
+                "hours": 80
+            },
+            "Sensores e Circuitos Digitais": {
+                "id": 914502,
+                "name_en": "Sensors and Digital Circuits",
+                "hours": 40
+            },
+            "Services Architecture / API / Mobile Architecture": {
+                "id": 537186,
+                "name_en": "Services Architecture / API / Mobile Architecture",
+                "hours": 80
+            },
+            "Social Media Planning": {
+                "id": 860741,
+                "name_en": "Social Media Planning",
+                "hours": 80
+            },
+            "Soluções Tecnológicas Emergentes": {
+                "id": 320654,
+                "name_en": "Emerging Technological Solutions",
+                "hours": 40
+            },
+            "Sound Design e Criação de Vídeos": {
+                "id": 781293,
+                "name_en": "Sound Design and Video Creation",
+                "hours": 80
+            },
+            "Técnicas de Negociação": {
+                "id": 145807,
+                "name_en": "Negotiation Techniques",
+                "hours": 40
+            },
+            "Unity Mobile": {
+                "id": 692314,
+                "name_en": "Unity Mobile",
+                "hours": 80
+            },
+            "User Experience": {
+                "id": 458721,
+                "name_en": "User Experience",
+                "hours": 60
+            },
+            "Web & Game Developing": {
+                "id": 991000,
+                "name_en": "Web and Game Development",
+                "hours": 100
+            }
+        },
+        "Global Solutions": {
+            "2026": [
+                "Space Connect"
+            ],
+            "2025": [
+                "Future Of Work",
+                "Protech the Future"
+            ],
+            "2024": [
+                "Green Energy",
+                "Blue Economy"
+            ]
+        },
+        "Challenges": {
+            "2026": [
+                "ACADEMIA PELÉ",
+                "ALYA",
+                "Anglis",
+                "ASTERIA",
+                "AVALON + Vault Capital",
+                "Banco Carrefour",
+                "Bez",
+                "BP",
+                "Care Plus",
+                "CEAP",
+                "Claro",
+                "Clickbus",
+                "Clyvo",
+                "DASA",
+                "DATEN",
+                "DRONE COLLEGE",
+                "EGESP",
+                "Eurofarma",
+                "FESTO",
+                "FlexMedia",
+                "FORD",
+                "Fortinet",
+                "FORZY - PROMON",
+                "GoodWe",
+                "HAOC",
+                "HOSP. MOINHOS DE VENTO",
+                "HOSP. SÃO RAFAEL",
+                "HOSP. SÍRIO-LIBANÊS",
+                "JOHN DEERE",
+                "Jovi",
+                "Leroy Merlin",
+                "LOCAWEB",
+                "MATERDEI",
+                "Mc Donalds",
+                "MERCEDES BENZ",
+                "METAINDUSTRIA / SPI",
+                "MEXE",
+                "MOTIVA / CCR",
+                "N1",
+                "NUCLEA",
+                "Oracle",
+                "Oracle Academy",
+                "Osten Games",
+                "OTIS",
+                "Palo Alto Networks",
+                "Pride Security",
+                "Prime Society",
+                "Profiria Academy",
+                "Quave",
+                "Rock New Venture",
+                "Santander Open Academy + Alura",
+                "SAP",
+                "Scooto",
+                "SOFTTEK",
+                "SOMPO SEGUROS",
+                "Soul Up",
+                "THM",
+                "TOTVS",
+                "Turma do Bem",
+                "Unimed",
+                "Wildlife Studios",
+                "WTC",
+                "YOUVISA",
+                "ZUP Innovation"
+            ],
+            "2025": [
+                "B3",
+                "Ccr",
+                "Click Go",
+                "Fortinet",
+                "Hc | Ibm",
+                "Odontoprev",
+                "Oracle",
+                "Passa a Bola",
+                "Santander",
+                "Smartlabs",
+                "Vivo"
+            ]
+        },
+        "I.C": {
+            "2025": {
+                "1": "Synaptic Cockpit",
+                "2": "SandBox",
+                "3": "BEE ARM"
+            }
+        }
+    },
+    "Metadata": {
+        "last_updated": "2026-10-11"
+    }
+}
