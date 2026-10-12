@@ -1,10 +1,63 @@
+import { useEffect, useRef, useState } from 'react'
 import '../css/catalog.css'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { Badge, Book, Filter, Search, WarningAlt, Wikis } from '@carbon/icons-react'
+import { Badge, Book, ChevronDown, ChevronUp, Filter, Microscope, Search, WarningAlt, Wikis } from '@carbon/icons-react'
 import { Loader } from '@geist-ui/icons'
 import { Link } from 'react-router-dom'
 import { useCatalog } from '../hooks/useCatalog'
+
+const MAX_VISIBLE_ROWS = 5
+
+const CatalogGrid = ({ children }) => {
+  const gridRef = useRef(null)
+  const [canToggle, setCanToggle] = useState(false)
+  const [expanded, setExpanded] = useState(false)
+
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+
+    const measure = () => {
+      const items = Array.from(grid.children)
+      if (items.length === 0) {
+        setCanToggle(false)
+        return
+      }
+
+      const rowOffsets = new Set(items.map((item) => item.offsetTop))
+      setCanToggle(rowOffsets.size > MAX_VISIBLE_ROWS)
+    }
+
+    measure()
+
+    const resizeObserver = new ResizeObserver(measure)
+    resizeObserver.observe(grid)
+
+    return () => resizeObserver.disconnect()
+  }, [children])
+
+  const isMinimized = canToggle && !expanded
+
+  return (
+    <>
+      <div ref={gridRef} className={`catalog-grid${isMinimized ? ' minimized' : ''}`}>
+        {children}
+      </div>
+      <div className="trans-smooth" />
+      {canToggle && (
+        <button
+          type='button'
+          className='catalog-toggle-btn'
+          onClick={() => setExpanded((prev) => !prev)}
+        >
+          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          <span>{expanded ? 'Ver menos' : 'Ver mais'}</span>
+        </button>
+      )}
+    </>
+  )
+}
 
 const Catalog = () => {
   const {
@@ -56,7 +109,7 @@ const Catalog = () => {
         <div className='catalog-filters'>
           <div className='catalog-search'>
             <Search size={16} />
-            <input type='text' placeholder='Buscar Challenge ou G.S...' value={search} onChange={(e) => setSearch(e.target.value)} />
+            <input type='text' placeholder='Buscar Challenges, G.S, I.C...' value={search} onChange={(e) => setSearch(e.target.value)} />
           </div>
 
           <div className='catalog-filter-chip'>
@@ -67,16 +120,15 @@ const Catalog = () => {
 
         {Object.entries(filteredCatalog)
           .sort(([a], [b]) => {
-            if (a === 'nano') return -1
-            if (b === 'nano') return 1
-            return a.localeCompare(b)
+            const order = { nano: 0, ic: 1, challenge: 2, gs: 3 }
+            return order[a] - order[b]
           })
           .map(([type, years]) => {
             if (type === 'nano') {
               return (
                 <section className='catalog-grid-main' key='nano'>
                   <h1>Nano Course<div className='hr' /></h1>
-                  <div className='catalog-grid'>
+                  <CatalogGrid>
                     <Link to='/badge?badge=nano' className='catalog-card'>
                       <div className='catalog-card-icon'>
                         <Book size={20} />
@@ -88,9 +140,33 @@ const Catalog = () => {
                         </div>
                       </div>
                     </Link>
-                  </div>
+                  </CatalogGrid>
                 </section>
               )
+            }
+
+            if (type === 'ic') {
+              return (
+                <section className='catalog-grid-main' key={type}>
+                  <h1>Iniciação Científica<div className='hr' /></h1>
+                  <CatalogGrid>
+                    {Object.keys(years).sort((a, b) => Number(b) - Number(a)).map((year) => (
+                      <Link key={`${type}-${year}`} to={`/badge?badge=ic&year=${year}`} className='catalog-card'>
+                        <div className='catalog-card-icon'>
+                          <Microscope size={20} />
+                        </div>
+                        <div className='catalog-card-content'>
+                          <h3>I.C {year}</h3>
+                          <div className='catalog-meta'>
+                            <span>Iniciação Científica</span>
+                            <span>{year}</span>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </CatalogGrid>
+                </section>
+              );
             }
 
             if (type === 'challenge') {
@@ -99,7 +175,7 @@ const Catalog = () => {
                 .map(([year, topics]) => (
                   <section className='catalog-grid-main' key={`${type}-${year}`}>
                     <h1>Challenge {year}<div className='hr' /></h1>
-                    <div className='catalog-grid'>
+                    <CatalogGrid>
                       {topics.map((topic) => (
                         <Link key={`${type}-${year}-${topic.slug}`} to={`/badge?badge=challenge&year=${year}&company=${topic.slug}`} className='catalog-card'>
                           <div className='catalog-card-icon'>
@@ -114,7 +190,7 @@ const Catalog = () => {
                           </div>
                         </Link>
                       ))}
-                    </div>
+                    </CatalogGrid>
                   </section>
                 ))
             }
@@ -125,7 +201,7 @@ const Catalog = () => {
                 .map(([year, topics]) => (
                   <section className='catalog-grid-main' key={`${type}-${year}`}>
                     <h1>Global Solution {year}<div className='hr' /></h1>
-                    <div className='catalog-grid'>
+                    <CatalogGrid>
                       {topics.map((topic) => (
                         <Link key={`${type}-${year}-${topic.slug}`} to={`/badge?badge=gs&year=${year}&topic=${topic.slug}`} className='catalog-card'>
                           <div className='catalog-card-icon'>
@@ -140,7 +216,7 @@ const Catalog = () => {
                           </div>
                         </Link>
                       ))}
-                    </div>
+                    </CatalogGrid>
                   </section>
                 ))
             }

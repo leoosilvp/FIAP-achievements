@@ -29,6 +29,13 @@ function buildBadgeUrl({ type, year, company, topic, badgeId, theme }) {
       params.set('ranking', badgeId)
       break
 
+    case 'ic':
+      params.set('badge', 'ic')
+      params.set('year', year)
+      params.set('company', company)
+      params.set('ranking', badgeId)
+      break
+
     default:
       return ''
   }
@@ -148,6 +155,7 @@ const Badges = () => {
     if (type === 'gs') return 'Global Solution'
     if (type === 'challenge') return 'Challenge'
     if (type === 'nano') return 'Nano Course'
+    if (type === 'ic') return 'Iniciação Científica'
     return 'Badges'
   }, [type])
 

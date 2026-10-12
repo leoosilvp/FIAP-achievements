@@ -2,7 +2,7 @@ import '../css/home.css'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
-import { ArrowRight, Badge, Book, Events, Grid, PullRequest, Search, Star, Wikis, } from '@carbon/icons-react'
+import { ArrowRight, Badge, Book, Events, Grid, Microscope, PullRequest, Search, Star, Wikis, } from '@carbon/icons-react'
 
 const features = [
   {
@@ -60,7 +60,7 @@ const steps = [
 
 const stats = [
   { value: '400+', label: 'Badges catalogadas' },
-  { value: '3', label: 'Categorias disponíveis' },
+  { value: '4', label: 'Categorias disponíveis' },
   { value: '100%', label: 'Open source' },
   { value: '0', label: 'Vínculos institucionais' },
 ]
@@ -69,6 +69,7 @@ const badgeCategories = [
   { name: 'Global Solution', tag: 'G.S' },
   { name: 'Challenge', tag: 'Challenge' },
   { name: 'Nano Course', tag: 'Nano' },
+  { name: 'Iniciação Científica', tag: 'I.C' },
 ]
 
 const Home = () => {
@@ -183,7 +184,7 @@ const Home = () => {
           {badgeCategories.map((category, index) => (
             <Link to='/catalog' key={index} className='home-categories-card'>
               <div className='home-categories-card-icon'>
-                {category.name === 'Nano Course' ? <Book size={28} /> : category.name === 'Global Solution' ? <Wikis size={28} /> : <Badge size={28} />}
+                {category.name === 'Nano Course' ? <Book size={28} /> : category.name === 'Global Solution' ? <Wikis size={28} /> : category.name === 'Iniciação Científica' ? <Microscope size={28} /> : <Badge size={28} />}
               </div>
               <span className='home-categories-card-tag'>
                 {category.tag}

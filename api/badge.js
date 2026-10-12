@@ -55,9 +55,9 @@ const PALETTE_QUERY_PARAMS = [
 ]
 
 const NAMED_BADGE_TYPES = {
+    ic: { label: 'Iniciação Científica', params: ['year', 'ranking'] },
     challenge: { label: 'Challenge', params: ['year', 'company'] },
     gs: { label: 'Global Solution', params: ['year', 'topic'] },
-    ic: { label: 'Scientific Initiation', params: ['year', 'ranking'] },
 }
 
 function loadAchievements() {

@@ -66,6 +66,21 @@ function buildCatalog(data) {
     // - Nano Courses
     catalog['nano'] = {}
 
+    // - I.C
+    const ic = ach['I.C'] ?? {}
+    catalog['ic'] = {}
+    for (const [year, rankings] of Object.entries(ic)) {
+        catalog['ic'][year] = Object.entries(rankings)
+            .map(([ranking, projectName]) => ({
+                title: projectName,
+                slug: ranking,
+                type: 'ic',
+                year: Number(year),
+                ranking,
+            }))
+            .sort((a, b) => Number(a.ranking) - Number(b.ranking))
+    }
+
     // - Challenges
     const challenges = ach['Challenges'] ?? {}
     catalog['challenge'] = {}
@@ -94,21 +109,6 @@ function buildCatalog(data) {
             .sort((a, b) => a.title.localeCompare(b.title))
     }
 
-    // - I.C
-    const ic = ach['I.C'] ?? {}
-    catalog['ic'] = {}
-    for (const [year, rankings] of Object.entries(ic)) {
-        catalog['ic'][year] = Object.entries(rankings)
-            .map(([ranking, projectName]) => ({
-                title: projectName,
-                slug: ranking,
-                type: 'ic',
-                year: Number(year),
-                ranking,
-            }))
-            .sort((a, b) => Number(a.ranking) - Number(b.ranking))
-    }
-
     return catalog
 }
 
@@ -124,6 +124,31 @@ function buildNanoBadges(data) {
         hours: entry.hours ?? null,
         themes: themeUrls({ badge: entry.id }),
     }))
+}
+
+/**
+ * Constrói as badges de I.C para um ano.
+ */
+function buildICBadges(data, year) {
+    const ic = data.Achievements?.['I.C'] ?? {}
+    const yearMap = ic[year]
+
+    if (!yearMap) return null
+
+    const badges = Object.entries(yearMap).map(([ranking, name]) => ({
+        id: ranking,
+        name,
+        themes: themeUrls({ badge: 'ic', year, ranking }),
+    }))
+
+    return {
+        title: 'Iniciação Científica',
+        slug: 'ic',
+        type: 'ic',
+        year: Number(year),
+        total: badges.length,
+        badges,
+    }
 }
 
 /**
@@ -180,31 +205,6 @@ function buildGSBadges(data, year, topic) {
                 themes: themeUrls({ badge: 'gs', year, topic }),
             },
         ],
-    }
-}
-
-/**
- * Constrói as badges de I.C para um ano.
- */
-function buildICBadges(data, year) {
-    const ic = data.Achievements?.['I.C'] ?? {}
-    const yearMap = ic[year]
-
-    if (!yearMap) return null
-
-    const badges = Object.entries(yearMap).map(([ranking, name]) => ({
-        id: ranking,
-        name,
-        themes: themeUrls({ badge: 'ic', year, ranking }),
-    }))
-
-    return {
-        title: 'Innovation Championship',
-        slug: 'ic',
-        type: 'ic',
-        year: Number(year),
-        total: badges.length,
-        badges,
     }
 }
 

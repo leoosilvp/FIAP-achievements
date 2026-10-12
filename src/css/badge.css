@@ -158,10 +158,17 @@
 .badge-url-cell code {
     display: flex;
     min-width: 100%;
-    width: 100%;
+    width: 600px;
     font-size: 0.7rem;
     color: #777;
     white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.badge-url-cell code::-webkit-scrollbar {
+    display: flex;
+    height: 0px;
 }
 
 .badge-copy-btn {
