@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const THEMES = ['black', 'dark', 'light', 'carbon', 'pink', 'panda', 'dracula']
+const THEMES = ['black', 'dark', 'light', 'carbon', 'gold', 'silver', 'violet', 'crimson', 'pink', 'panda', 'dracula']
 
 // - Carrega achievements.json ---------------------------------------------
 
@@ -22,7 +22,7 @@ function loadAchievements() {
 // - Helpers ---------------------------------------------------------------
 
 /**
- * Monta a URL da badge dinâmica no padrão já usado pelos consumers:
+ * Monta a URL da badge:
  *   /api/badge?badge=<type>&...&theme=<theme>
  * Para Nano Courses, usa o id numérico diretamente.
  */

@@ -56,6 +56,10 @@ const THEMES = [
   { name: 'Black', key: 'black' },
   { name: 'Dark', key: 'dark' },
   { name: 'Carbon', key: 'carbon' },
+  { name: 'Gold', key: 'gold' },
+  { name: 'Silver', key: 'silver' },
+  { name: 'Violet', key: 'violet' },
+  { name: 'Crimson ', key: 'crimson' },
   { name: 'Pink', key: 'pink' },
   { name: 'Panda', key: 'panda' },
   { name: 'Dracula', key: 'dracula' }

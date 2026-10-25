@@ -6,7 +6,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const THEMES = ['light', 'dark', 'black', 'carbon', 'pink', 'panda', 'dracula']
+const THEMES = ['light', 'dark', 'black', 'carbon', 'gold', 'silver', 'violet', 'crimson', 'pink', 'panda', 'dracula']
 const DEFAULT_THEME = 'carbon'
 const DEFAULT_RANKING = '1'
 const FONT_SANS = "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif"
@@ -14,32 +14,92 @@ const FONT_SERIF = "'IBM Plex Serif', Georgia, 'Times New Roman', serif"
 
 const THEME_PALETTE = {
     light: {
-        bg: '#f8f7f4', text: '#29251f', muted: '#655f58', accent: '#b54d3d',
-        edge: '#c7c3bb', line: '#d1ccc3',
+        bg: '#f8f7f4',
+        text: '#29251f',
+        muted: '#655f58',
+        accent: '#b54d3d',
+        edge: '#c7c3bb',
+        line: '#d1ccc3'
     },
     dark: {
-        bg: '#c40847', text: '#fff', muted: '#ffd1e0', accent: '#ffbfd4',
-        edge: '#9a0d3c', line: '#9a0d3c',
+        bg: '#c40847',
+        text: '#fff',
+        muted: '#ffd1e0',
+        accent: '#ffbfd4',
+        edge: '#9a0d3c',
+        line: '#9a0d3c'
     },
     black: {
-        bg: '#000000', text: '#ffffff', muted: '#f5f5f5', accent: '#ffffff',
-        edge: '#555555', line: '#5a5a5a',
+        bg: '#000000',
+        text: '#ffffff',
+        muted: '#f5f5f5',
+        accent: '#ffffff',
+        edge: '#555555',
+        line: '#5a5a5a'
     },
     carbon: {
-        bg: '#141414', text: '#d9d9d9', muted: '#767676', accent: '#d9d9d9',
-        edge: '#555555', line: '#5a5a5a',
+        bg: '#141414',
+        text: '#d9d9d9',
+        muted: '#767676',
+        accent: '#d9d9d9',
+        edge: '#555555',
+        line: '#5a5a5a'
+    },
+    gold: {
+        bg: '#000',
+        text: '#dfc168',
+        muted: '#d8b96a',
+        accent: '#dfc168',
+        edge: '#524b36',
+        line: '#4e4630'
+    },
+    silver: {
+        bg: '#d5d5d5',
+        text: '#2e2e2e',
+        muted: '#6c6c6c',
+        accent: '#676767',
+        edge: '#eaeaea',
+        line: '#b9b9b9'
+    },
+    violet: {
+        bg: '#000000',
+        text: '#ad66e3',
+        muted: '#7c6092',
+        accent: '#c476ff',
+        edge: '#49464a',
+        line: '#574c60'
+    },
+    crimson: {
+        bg: '#000000',
+        text: '#df1010',
+        muted: '#9e2828',
+        accent: '#ff2323',
+        edge: '#4a4646',
+        line: '#604c4c'
     },
     pink: {
-        bg: '#ffcbea', text: '#f0249b', muted: '#c75095', accent: '#ff0095',
-        edge: '#d68bb7', line: '#e690c2',
+        bg: '#ffcbea',
+        text: '#f0249b',
+        muted: '#c75095',
+        accent: '#ff0095',
+        edge: '#d68bb7',
+        line: '#e690c2'
     },
     panda: {
-        bg: '#33353b', text: '#f8f8f2', muted: '#6fc1ff', accent: '#ff4b82',
-        edge: '#61646f', line: '#50525a',
+        bg: '#33353b',
+        text: '#f8f8f2',
+        muted: '#6fc1ff',
+        accent: '#ff4b82',
+        edge: '#61646f',
+        line: '#50525a'
     },
     dracula: {
-        bg: '#45475a', text: '#f8f8f2', muted: '#8a97bc', accent: '#ff79c6',
-        edge: '#6f7388', line: '#5f6275',
+        bg: '#45475a',
+        text: '#f8f8f2',
+        muted: '#8a97bc',
+        accent: '#ff79c6',
+        edge: '#6f7388',
+        line: '#5f6275'
     },
 }
 
